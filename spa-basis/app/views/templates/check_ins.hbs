@@ -1,0 +1,16 @@
+{{#each .}}
+	<li class="{{extraClass}}">
+		<div class="icon">
+			<img src="{{icon}}" alt="" class="img-responsive">
+		</div>
+		<div class="details">
+			<strong title="{{name}}">{{name}}</strong>
+			<time>{{stamp}}</time>
+			<address>{{vicinity}}</address>
+			<cite>{{userName}}</cite>
+			{{#if comment}}
+				<q>{{comment}}</q>
+			{{/if}}
+		</div>
+	</li>
+{{/each}}

@@ -1,0 +1,57 @@
+/*------------------------------------*\
+    _header.scss
+\*------------------------------------*/
+/**
+ *
+ * styling the header element
+ * =header......base header
+ *
+ */
+
+/**
+* =header
+*/
+header, .header {
+	background:none $white;
+	border-bottom:1px solid $grey;
+	/* mediaqueries */
+	@include media-query(desk) {
+		> .layout-centered {
+			padding:0;
+		}
+	}
+	@include media-query(lap) {
+		> .layout-centered {
+			padding:0 10px 0 10px;
+		}
+	}
+	@include media-query(palm) {
+		> .layout-centered {
+			padding:0 10px 0 10px;
+		}
+	}
+}
+
+header.formation__header {
+	background:none $white;
+	border-bottom:1px solid $grey;
+	.header {
+		border:none;
+	}
+	/* mediaqueries */
+	@include media-query(desk) {
+		> .header {
+			padding:10px;
+		}
+	}
+	@include media-query(lap) {
+		> .header {
+			padding:0 10px 0 10px;
+		}
+	}
+	@include media-query(palm) {
+		> .header {
+			padding:0 10px 0 10px;
+		}
+	}
+}

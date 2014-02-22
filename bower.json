@@ -1,0 +1,24 @@
+{
+  "name": "_trainning",
+  "version": "0.0.1",
+  "authors": [
+    "mattfullsix <elmoujot@hotmail.com>"
+  ],
+  "description": "trainning",
+  "main": "index.html",
+  "keywords": [
+    "Trainning"
+  ],
+  "license": "BSD",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "inuit.css": "~5.0.0",
+    "modernizr": "~2.7.1"
+  }
+}

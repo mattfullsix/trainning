@@ -1,0 +1,40 @@
+/*------------------------------------*\
+    _footer.scss
+\*------------------------------------*/
+/**
+ *
+ * styling the footer element
+ * =footer......base footer
+ *
+ */
+
+/**
+* =footer
+*/
+footer, .footer {
+	/*todo*/
+}
+
+footer.formation__footer {
+    background:none $white;
+    border-top:1px solid $grey;
+    .footer {
+        border:none;
+    }
+    /* mediaqueries */
+    @include media-query(desk) {
+        > .footer {
+            padding:10px;
+        }
+    }
+    @include media-query(lap) {
+        > .footer {
+            padding:0 10px 0 10px;
+        }
+    }
+    @include media-query(palm) {
+        > .footer {
+            padding:0 10px 0 10px;
+        }
+    }
+}

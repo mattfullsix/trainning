@@ -1,0 +1,17 @@
+{{#each places}}
+	<li class="col-md-4 col-sm-6" data-place-id="{{id}}">
+		<div class="icon">
+			<img src="{{icon}}" alt="" class="img-responsive">
+		</div>
+		<div class="details">
+			<strong title="{{name}}">{{name}}</strong>
+			<address>{{vicinity}}</address>
+			<small>(à {{distance}}m, soit {{seconds_to_minutes duration}} à pied)</small>
+		</div>
+	</li>
+{{else}}
+	<li class="searching">
+		<img src="/images/spinner.gif" alt="" class="spinner">
+		Recherche en cours...
+	</li>
+{{/each}}

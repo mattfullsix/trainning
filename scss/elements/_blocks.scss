@@ -1,0 +1,86 @@
+/*------------------------------------*\
+    _blocks.scss
+\*------------------------------------*/
+/**
+ *
+ * styling blocks of content
+ * =blocks.........base blocks (content level)
+ *
+ */
+
+/**
+* =blocks
+*/
+.content {
+	.block__main {
+		@include media-query(desk) {
+			padding-bottom:20px;
+			padding-top:20px;
+		}
+		@include media-query(lap) {
+			padding-bottom:10px;
+			padding-top:10px;
+		}
+		@include media-query(palm) {
+			padding-bottom:10px;
+			padding-top:10px;
+		}
+	}
+	.block__second {
+		@include media-query(desk) {
+			padding-bottom:20px;
+			padding-top:20px;
+		}
+		@include media-query(lap) {
+			padding-bottom:10px;
+			padding-top:10px;
+		}
+		@include media-query(palm) {
+			padding-bottom:10px;
+			padding-top:10px;
+		}
+	}
+}
+
+.formation {
+	.formation__heading {
+		@extend .extd-naked;
+		@include media-query(desk) {
+			padding:20px 0 20px 0;
+		}
+		@include media-query(lap) {
+			padding:10px 0 10px 0;
+		}
+		@include media-query(palm) {
+			padding:10px 0 10px 0;
+		}
+	}
+	.formation__section {
+		border-bottom:1px solid $silver;
+		&.last {
+			border:none;
+		}
+		@include media-query(desk) {
+			padding-bottom:20px;
+		}
+		@include media-query(lap) {
+			padding-bottom:10px;
+		}
+		@include media-query(palm) {
+			padding-bottom:10px;
+		}
+	}
+	/*ul*/.topics {
+		background:none $white;
+		padding:0 10px 0 10px;
+		.topic {
+			.topic__title {
+				@extend .h2-size;
+			}
+			.troll__alert {
+				@extend .h2-size;
+				color:$orange;
+			}
+		}
+	}
+}

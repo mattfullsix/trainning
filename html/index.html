@@ -1,0 +1,697 @@
+<!doctype html>
+<!--[if IE 7]><html class="no-js ie7" lang="fr"> <![endif]-->
+<!--[if IE 8]><html class="no-js ie8" lang="fr"> <![endif]-->
+<!--[if IE 9]><html class="no-js ie9" lang="fr"> <![endif]-->
+<!--[if gt IE 9]><!--> <html lang="fr" class="no-js"> <!--<![endif]-->
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Formation</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta property="og:title" content="Formation" />
+    <meta property="og:url" content="" />
+    <meta property="og:image" content="" />
+    <meta property="og:description" content="" />
+    <link rel="canonical" href="index.php">
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="css/style.min.css">
+	<!--[if lt IE 9]>
+		<script>
+			// html5 Shiv
+			document.createElement('header');
+			document.createElement('nav');
+			document.createElement('article');
+			document.createElement('aside');
+			document.createElement('section');
+			document.createElement('figure');
+			document.createElement('footer');
+		</script>
+	<![endif]-->
+	<script src="js/vendor/modernizr.js"></script>
+</head>
+<body role="document">
+	<div class="page bg--hash formation">
+    <header class="layout-full formation__header">
+        <div class="layout-centered header">
+            <h1 class="formation__heading">JS Total</h1>
+            <p>
+                Recap des 4 jours de formation Js Total.<br>
+                <a href="http://delicious-insights.com/" class="link--slides">Delicious Insights</a>
+            </p>
+        </div>
+    </header>
+    <section class="layout-centered formation__section">
+        <h2 class="formation__heading">JST / day-1</h2>
+        <a href="http://delicious-insights.com/jst-day1" class="link--slides">Slides day-1</a>
+        <ul class="topics">
+            <li class="topic">
+                <span class="topic__title">Topics / Ressources</span>
+            </li>
+            <li class="topic">
+                Versions d'Ecmascript / compatibilité :<br>
+                compatibilité IE9 - = ecmascript 3<br>
+                compatibilité IE9 + = ecmascript 5<br>
+                voir la spec ecmascript5<br>
+                <a href="http://www.ecma-international.org/ecma-262/5.1/" class="link--ext">
+                    ecmascript
+                </a>
+            </li>
+            <li class="topic">
+                Harmony -> prochaine version spec (ecmascript 6)<br>
+                Change plusieurs méthodes et en introduit de nouvelles : la méthode "toString" disparaît au profit de nouvelles méthodes (Angular base toute son injection de dépendances dessus, par exemple)
+            </li>
+            <li class="topic">
+                Regexp -> article js attitude<br>
+                <a href="http://www.js-attitude.fr/2012/08/13/enfin-maitriser-les-expressions-rationnelles/" class="link--ext">
+                    article
+                </a>
+            </li>
+            <li class="topic">
+                API Date de Js foireuse : manipuler des dates avec moment.js / momentsaway.js<br>
+                <a href="http://momentjs.com/" class="link--ext">
+                    lib: moment.js
+                </a>
+                <a href="https://www.npmjs.org/package/moments-away" class="link--ext">
+                    npm module : moments-away.js
+                </a>
+            </li>
+            <li class="topic">
+                es5.shim -> fonctionnalités es5 sous IE9 -<br>
+                <a href="https://github.com/es-shims/es5-shim" class="link--ext">
+                    lib : es5shim.js
+                </a>
+            </li>
+            <li class="topic">
+                Intégration web : Les bonnes pratiques.<br>
+                <a href="http://www.amazon.fr/Int%C3%A9gration-web-bonnes-pratiques-lint%C3%A9grateur/dp/2212133707" class="link--ext">
+                    bouquin
+                </a>
+            </li>
+            <li class="topic">
+                Ne jamais utiliser new sur un objet natif<br>
+                <a href="http://www.js-attitude.fr/2012/11/22/pourquoi-jamais-new-sur-natifs-en-js/" class="link--ext">
+                    article
+                </a>
+            </li>
+            <li class="topic">
+                Ne jamais parseInt ou parseFloat<br>
+                <a href="http://www.js-attitude.fr/2012/12/26/convertir-un-nombre-en-texte-en-javascript/" class="link--ext">
+                    article
+                </a>
+            </li>
+            <li class="topic">
+                un constructeur est une fonction qui initialise un object avec des valeurs de propriétés<br>
+                un argument est une valur passée au moment nécessaire<br>
+                écrire Number(x) est similaire à écrire +(x) (conversion automatique de (x) en number)<br>
+                i++ différent de ++i -> i++ donne 0, 1, 2.. quand ++i donne 1, 2, 3, ..<br>
+                <a href="http://www.js-attitude.fr/2013/01/21/dix-bonnes-pratiques-javascript/" class="link--ext">
+                    article - 10bonnes partiques js
+                </a>
+            </li>
+            <li class="topic">
+                sortir d'un binding foireux<br>
+                <a href="http://www.alistapart.com/articles/getoutbindingsituations/" class="link--ext">
+                    article
+                </a>
+            </li>
+            <li class="topic">
+                loose augmentation -> ajouter des propriétés à un objet de manière découpée<br>
+                module patterns<br>
+                <a href="http://www.adequatelygood.com/JavaScript-Module-Pattern-In-Depth.html" class="link--ext">
+                    article
+                </a>
+            </li>
+            <li class="topic">
+                <div class="grid">
+                    <div class="grid__item one-half lap-one-half palm-one-whole">
+                        closure mal introduite<br>
+                        <pre>
+                            <code>
+for (var index = 0; index < 10; ++index)
+    setTimeout(function() { console.log(index); }, 0);
+                            </code>
+                        </pre>
+                    </div><div class="grid__item one-half lap-one-half palm-one-whole">
+                        bonne closure<br>
+                        <pre>
+                            <code>
+for (var index = 0; index < 10; ++index)
+    (function(i) {
+        setTimeout(function() { console.log(i); }, 0);
+    })(index);
+                            </code>
+                        </pre>
+                    </div>
+                </div>
+            </li>
+            <li class="topic">
+                Brunch<br>
+                <a href="https://www.npmjs.org/package/brunch" class="link--ext">
+                    npm module
+                </a>
+                <a href="http://brunch.io/" class="link--ext">
+                    website
+                </a>
+            </li>
+            <li class="topic">
+                Mouvement "offline first" / "mobile first"<br>
+                Regarder Hood.ie<br>
+                <a href="Hoodie.js http://hood.ie/" class="link--ext">
+                    website
+                </a>
+            </li>
+            <li class="topic">
+                Regarder langage Smalltalk / seaside<br>
+                <a href="http://www.smalltalk.org/main/" class="link--ext">
+                    website
+                </a>
+            </li>
+            <li class="topic">
+                Regarder langage io -> basé entièrement sur prototype<br>
+                <a href="http://iolanguage.org/" class="link--ext">
+                    website
+                </a>
+            </li>
+        </ul>
+    </section>
+	<section class="layout-centered formation__section">
+        <h2 class="formation__heading">JST / day-2</h2>
+        <a href="http://delicious-insights.com/jst-day2" class="link--slides">Slides day-2</a>
+        <ul class="topics">
+            <li class="topic">
+                <span class="topic__title">Topics / Ressources</span>
+            </li>
+            <li class="topic">
+                Regarder code school<br>
+                <a href="https://www.codeschool.com/" class="link--ext">
+                    website
+                </a>
+            </li>
+            <li class="topic">
+                Le Linting : jslint, jshint<br>
+                utiliser le jshint dans Sublime avec SublimeLinter<br>
+                <a href="http://www.jslint.com/lint.html" class="link--ext">
+                    jslint
+                </a>
+                <a href="http://www.jshint.com/" class="link--ext">
+                    jshint
+                </a>
+                <a href="http://www.jshint.com/docs/options/#options" class="link--ext">
+                    jshint options
+                </a>
+            </li>
+            <li class="topic">
+                articles et vidéo de Paul Irish sur les devtools<br>
+                apprendre à maitriser les devtools, utiliser la console, les points d'arrêt, la stack trace<br>
+                dans la console : $0, $1, $2.. permet de reselectionner les derniers éléments<br>
+                dans la console : $_ retiens le dernier résultat évalué<br>
+                aller chercher le plugin pageSpeed pour Chrome<br>
+                <a href="http://discover-devtools.codeschool.com/" class="link--ext">
+                    article
+                </a>
+                <a href="http://www.youtube.com/playlist?list=PLNYkxOF6rcIBQ8j3J_PyM8JLAGKqZRByw" class="link--ext">
+                    video
+                </a>
+                <a href="https://developers.google.com/speed/pagespeed/" class="link--ext">
+                    plugin Chrome
+                </a>
+            </li>
+            <li class="topic">
+                Apprendre les options de console.(..) et son API<br>
+                On peut grouper ses logs, utiliser console.group / console.groupEnd / console.groupCollapsed<br>
+                utiliser .table(); avec une collection ou un array en param<br>
+                <pre>
+                    <code>
+console.table(['a', 'b']);
+
+console.table([ ['a', 'b'], ['a', 'b', 'c', 'd']]);
+                    </code>
+                </pre>
+                console.time('foo'); puis console.timeEnd('foo'), donne l'intervale de temps écoulée<br>
+                on peut passer plusieurs paramètres à un console.log(); :
+                <pre>
+                    <code>
+console.log({
+   param1,
+   param2 + ' / ' + param1,
+   'my param: ' + param3
+});
+                    </code>
+                </pre>
+                <a href="https://developers.google.com/chrome-developer-tools/docs/console-api" class="link--ext">
+                    article
+                </a>
+            </li>
+            <li class="topic">
+                Remote debugging<br>
+                Weinre / web inspector remote<br>
+                <a href="http://people.apache.org/~pmuellr/weinre/docs/latest/" class="link--ext">
+                    weinre
+                </a><br>
+                Adobe edge inspect<br>
+                -> serveur local / connection cloud Adobe -> extension Chrome<br>
+                <a href="http://html.adobe.com/edge/inspect/" class="link--ext">
+                    edge inspect
+                </a><br>
+                Android<br>
+                <a href="https://developers.google.com/chrome-developer-tools/docs/remote-debugging" class="link--ext">
+                    article
+                </a>
+                <a href="https://hacks.mozilla.org/2012/08/remote-debugging-on-firefox-for-android/" class="link--ext">
+                    article
+                </a><br>
+                Safari<br>
+                <a href="http://www.iwebinspector.com/" class="link--ext">
+                    iwebinspector
+                </a>
+                <a href="https://github.com/google/ios-webkit-debug-proxy" class="link--ext">
+                    ios-webkit-debug-proxy
+                </a>
+                <a href="http://www.mobilexweb.com/blog/iphone-5-ios-6-html5-developers" class="link--ext">
+                    article
+                </a>
+            </li>
+            <li class="topic">
+                Preprocesseurs Css / Js<br>
+                Sass (.scss = Sass v3)<br>
+                <a href="http://sass-lang.com/" class="link--ext">
+                    sass-lang
+                </a><br>
+                Stylus<br>
+                <a href="http://learnboost.github.io/stylus/" class="link--ext">
+                    stylus
+                </a><br>
+                Rails<br>
+                <a href="http://rubyonrails.org/" class="link--ext">
+                    rails
+                </a><br>
+                Coffeescript<br>
+                <a href="http://coffeescript.org/" class="link--ext">
+                    coffee
+                </a>
+            </li>
+            <li class="topic">
+                Livereload<br>
+                pas idéal pour le js, l'event doc.ready est fire à chaque reload<br>
+                pratique pour les css, préférer l'extension Chrome<br>
+                <a href="http://livereload.com//" class="link--ext">
+                    website
+                </a>
+            </li>
+            <li class="topic">
+                Definition du perimetre techno<br>
+                lier caniuse avec des données Google Analytics<br>
+                donne un profil techno des devices utilisés pour visiter un domaine<br>
+                <a href="http://caniuse.com/" class="link--ext">
+                    website
+                </a>
+            </li>
+            <li class="topic">
+                html5test<br>
+                test de features par navigateur<br>
+                <a href="http://html5test.com/" class="link--ext">
+                    website
+                </a>
+            </li>
+            <li class="topic">
+                Modernizr reste le top en front<br>
+                se servir des classes de test pour les features-detection directement dans le css en préfixant ses classes par les classes modernizr<br>
+                <a href="http://modernizr.com/" class="link--ext">
+                    website
+                </a>
+            </li>
+            <li class="topic">
+                Modules / AMD<br>
+                Asynchronous module definition - chargement asynchrone des modules js<br>
+                la balise script est une balise "bloquante", elle géle le navigateur, qui va arrêter toute les autres opérations pour s'occuper du chargement de la ressources indiquée par la balise (ou execution de script)<br>
+                on préfère placer tous appels de scripts en fin de page pour ne paas bloquer le chargement (sauf modernizr)<br>
+                pour des scripts de taggage (xiti ou autre) on pourra écrire le script via la méthode document.write après le chargement de la page<br>
+                <a href="http://www.commonjs.org/specs/modules/1.0/" class="link--ext">
+                    AMD spec commonjs
+                </a><br>
+                AMD github<br>
+                <a href="https://github.com/amdjs/amdjs-api/wiki/AMD" class="link--ext">
+                    AMD
+                </a><br>
+                RequireJS<br>
+                Pour l'AMD, requireJS est le mieux<br>
+                <a href="http://requirejs.org/docs/why.html" class="link--ext">
+                    require
+                </a><br>
+                Modules dans Harmony - ecmascript6<br>
+                <a href="http://wiki.ecmascript.org/doku.php?id=harmony:modules" class="link--ext">
+                    modules dans Harmony
+                </a><br>
+                en termes de perf, la concaténation en commonJs est plus performante que l'AMD<br>
+                penser aussi que si on utilise une routine de concaténation sur des modules avec du requireJs ou équivalent, les fichiers concaténés ne sont plus asynchrones puisque tous chargés en même temps<br>
+                voir Almond.js -> tout requireJS sans l'asynchrone<br>
+                <a href="https://github.com/jrburke/almond" class="link--ext">
+                    almondjs
+                </a>
+            </li>
+            <li class="topic">
+                Templating js<br>
+                on va préférer des solutions logic-less et escaped : qui n'imposent qu'une syntaxe simple, et proposent un mécanisme d'escape du html<br>
+                Mustache et Handlebars peuvent être utilisés pour tout type de langage, Handlebars est une version plus puissante de Mustache, proposant plus d'options sur le templating<br>
+                Mustache.js<br>
+                <a href="http://mustache.github.io/" class="link--ext">
+                    mustache
+                </a><br>
+                Handlebars.js<br>
+                <a href="http://handlebarsjs.com/" class="link--ext">
+                    handlebars
+                </a><br>
+                Jade<br>
+                <a href="http://jade-lang.com/" class="link--ext">
+                    jade
+                </a>
+            </li>
+            <li class="topic">
+                Data-binding et Framework MVC<br>
+                plusieurs type de frameworks ou lib, les framework de base, les "full client" et les "full stack"<br>
+                En framework de base, qui ne proposent qu'un squelette de MVC et des plugins : Backbone et Marionette<br>
+                pour l'extension des vue Backbone -> HumanJavascript<br>
+                <a href="http://backbonejs.org/" class="link--ext">
+                    backbone
+                </a>
+                <a href="http://marionettejs.com/" class="link--ext">
+                    marionette
+                </a><br>
+                En framework "full client" : Angular, Ember, Chaplin, Backbone + Marionette<br>
+                le risque avec angular est qu'il y a peu de chances de support sur les prochaines années, et son système d'injection de dépendances basé sur "toString" qui va disparaître en ecmascript6 (et le dom pollué par les ng-attributes)<br>
+                <a href="http://angularjs.org/" class="link--ext">
+                    angular
+                </a>
+                <a href="http://emberjs.com/" class="link--ext">
+                    ember
+                </a>
+                <a href="http://chaplinjs.org/" class="link--ext">
+                    chaplin
+                </a><br>
+                En "full stack" : Tower.js, Compound.js, Meteor.js<br>
+                <a href="http://tower.github.io/" class="link--ext">
+                    tower
+                </a>
+                <a href="http://compoundjs.com/" class="link--ext">
+                    compound
+                </a>
+                <a href="https://www.meteor.com/" class="link--ext">
+                    meteor
+                </a><br>
+                Pour du data-binding sans couche MVC : KnockoutJS, BatmanJS<br>
+                Knockout est plus simple qu'Angular ou Ember, mais pollue moins le DOM : attribut unique<br>
+                <a href="http://knockoutjs.com/" class="link--ext">
+                    knockout
+                </a>
+                <a href="http://batmanjs.org/" class="link--ext">
+                    batman
+                </a><br>
+            </li>
+    </section>
+	<section class="layout-centered formation__section">
+        <h2 class="formation__heading">JST / day-3 - journée code</h2>
+        <a href="http://delicious-insights.com/jst-day3" class="link--slides">Slides day-3</a>
+        <ul class="topics">
+            <li class="topic">
+                <span class="topic__title">Topics / Ressources</span>
+            </li>
+            <li class="topic">
+                Underscore.js<br>
+                lib utilitaire, développée en complèment de backbone.js, peut être utilisée indépendamment de jQuery<br>
+                <a href="http://underscorejs.org/" class="link--ext">
+                    underscore
+                </a>
+            </li>
+            <li class="topic">
+                node_modules : socket.io pour les websockets / express pour utiliser un server local<br>
+                <a href="http://socket.io/" class="link--ext">
+                    socket.io
+                </a>
+                <a href="http://expressjs.com/" class="link--ext">
+                    express
+                </a>
+            </li>
+            <li class="topic">
+                packages Sublime utiles :<br>
+                handlebars / coffeescript / stylus (coloration syntaxique)<br>
+                advanced new file / caniuse<br>
+            </li>
+            <li class="topic">
+                console-helper<br>
+                safe console for all browser - ajoute la console sous IE8 -<br>
+                <pre>
+                    <code>
+// Make it safe to do console.log() always.
+(function (con) {
+  var method;
+  var dummy = function() {};
+  var methods = ('assert,count,debug,dir,dirxml,error,exception,group,' +
+     'groupCollapsed,groupEnd,info,log,markTimeline,profile,profileEnd,' +
+     'time,timeEnd,trace,warn').split(',');
+  while (method = methods.pop()) {
+    con[method] = con[method] || dummy;
+  }
+})(window.console = window.console || {});
+                    </code>
+                </pre>
+            </li>
+            <li class="topic">
+                Maps meilleures que GMaps (sauf niveau poi) : openstreetmap / leafletjs<br>
+                <a href="http://openstreetmap.fr/" class="link--ext">
+                    openstreetmap
+                </a>
+                <a href="http://leafletjs.com/" class="link--ext">
+                    leafletjs
+                </a>
+            </li>
+            <li class="topic">
+                le REST, basé sur le CRUD / event server<br>
+                GET /url/ -> liste<br>
+                POST /url/ -> create (C)<br>
+                GET /url/id -> read / show (R)<br>
+                PUT /url/id -> update (U)<br>
+                DELETE /url/id -> destroy (D)<br>
+            </li>
+            <li class="topic">
+                faire du JSON storage avec Lawnchair<br>
+                <a href="http://brian.io/lawnchair/" class="link--ext">
+                    lawnchair
+                </a>
+            </li>
+            <li class="topic">
+                à venir coté Mozilla : localforage<br>
+                <a href="https://github.com/mozilla/localForage" class="link--ext">
+                    localforage
+                </a>
+                <a href="https://github.com/addyosmani/polymer-localforage" class="link--ext">
+                    polymer localforage
+                </a>
+            </li>
+        </ul>
+    </section>
+    <section class="layout-centered formation__section last">
+        <h2 class="formation__heading">JST / day-4</h2>
+        <a href="http://delicious-insights.com/jst-day4" class="link--slides">Slides day-4</a>
+        <ul class="topics">
+            <li class="topic">
+                <span class="topic__title">Topics / Ressources</span>
+            </li>
+            <li class="topic">
+                <span class="troll__alert">!! vapor.js !!</span><br>
+                <a href="https://github.com/madrobby/vapor.js" class="link--ext">
+                    vapor.js
+                </a>
+            </li>
+            <li class="topic">
+                article sur les promises sur html5rocks<br>
+                les promises sont la meilleure façon de déclarer un callback sur n'importe quelle fonction<br>
+                une promise attends un retour de valeur avant de se résoudre<br>
+                la fonction $.ajax de jQuery est quasiment une promise parce qu'elle attend un retour d'état avant de se résoudre<br>
+                <a href="http://www.html5rocks.com/fr/tutorials/es6/promises/" class="link--ext">
+                    promises
+                </a>
+            </li>
+            <li class="topic">
+                utiliser l'appcache<br>
+                voir la conférence appcache:douchebag<br>
+                fichier manifest.appcache avec un attribut déclaré sur la balise html<br>
+                sur du https -> appcache obligé de ne servir que des données du même domaine<br>
+                appcache permet de définir données à mettre en cache, à chercher en reseau, et un fallback<br>
+                le cache doit être valide (format, syntaxe, présence des fichiers) pour être pris en compte<br>
+                le fichier est versionné en commentaire, parce qu'une fois qu'il a été servi, il faut qu'une modification y soit apportée pour que le navigateur le recharge et refresh le cache des fichiers<br>
+                <a href="http://appcachefacts.info/" class="link--ext">
+                    appcache
+                </a>
+            </li>
+            <li class="topic">
+                Tests<br>
+                plusieurs solutions de tests et tests unitaires, avec couverture de test (blanket coverage)<br>
+                chaque solution nécessite un repretoire spécifique à la racine du projet<br>
+                il y a plusieurs syntaxes de redaction de test (mode specs..)<br>
+                écrire les tests avant le code permet d'écrire moins de code inutile, si chaque bout de code correspond à un test<br>
+                avec mocha : écrire les tests en pending, puis écrire le code au fur et à mesure<br>
+                QUnit<br>
+                inspiré de jQuery / test unitaire coté navigateur, facile à prendre en main<br>
+                <a href="http://qunitjs.com/" class="link--ext">
+                    qunit
+                </a><br>
+                Jasmine<br>
+                <a href="http://pivotal.github.io/jasmine/" class="link--ext">
+                    jasmine
+                </a><br>
+                Sinon.js / Buster.js<br>
+                Buster.js -> Buster.JS + Sinon.JS<br>
+                permet du faire du fake server / fake time<br>
+                <a href="http://sinonjs.org/" class="link--ext">
+                    sinon
+                </a>
+                <a href="http://docs.busterjs.org/en/latest/" class="link--ext">
+                    buster
+                </a><br>
+                Mocha<br>
+                meilleur framework de test / basé sur Node<br>
+                <a href="http://visionmedia.github.io/mocha/" class="link--ext">
+                    mocha
+                </a><br>
+                Blanket Coverage : la couverture de test donne un pourcentage code testé / code écrit<br>
+                <a href="https://github.com/cainus/node-coveralls" class="link--ext">
+                    blanket coverage
+                </a><br>
+                Blanket.js<br>
+                donne un CR de la couverture de test du code, par fichier<br>
+                <a href="http://blanketjs.org/" class="link--ext">
+                    blanket
+                </a><br>
+                Test coté Client & Headless<br>
+                parcours de test simulés dans un navigateur<br>
+                Selenium<br>
+                <a href="http://docs.seleniumhq.org/" class="link--ext">
+                    selenium
+                </a><br>
+                Karma<br>
+                en js, issu de l'univers Yeoman / Node - anciennement Testacular<br>
+                -> ne prends pas en charge IE<br>
+                <a href="http://karma-runner.github.io/0.10/index.html" class="link--ext">
+                    karma
+                </a><br>
+                PhantomJS (headless)<br>
+                <a href="http://phantomjs.org/" class="link--ext">
+                    phantomjs
+                </a><br>
+                CasperJS (headless)<br>
+                <a href="http://casperjs.org/" class="link--ext">
+                    casper
+                </a><br>
+                SlimerJS (headless)<br>
+                <a href="http://slimerjs.org/" class="link--ext">
+                    slimer
+                </a><br>
+                Poltergeist (headless)<br>
+                <a href="https://github.com/jonleighton/poltergeist" class="link--ext">
+                    poltergeist
+                </a><br>
+                VM en PAAS - payant<br>
+                Tester sur des VM distantes : browserstack, saucelabs, browserling<br>
+                <a href="http://www.browserstack.com/" class="link--ext">
+                    browserstack
+                </a>
+                <a href="https://saucelabs.com/" class="link--ext">
+                    saucelabs
+                </a>
+                <a href="https://browserling.com/" class="link--ext">
+                    browserling
+                </a><br>
+                trouver des VM spécifiques de versions Windows / IE<br>
+                <a href="http://loc.modern.ie/fr-fr" class="link--ext">
+                    modernIE
+                </a>
+            </li>
+            <li class="topic">
+                DOCS<br>
+                on peut faire du JsDoc, ou JavaDoc sur le modèle @param / @Functon... mais c'est lourd et peu pratique<br>
+                avec des outils comme Docco ou Groc, c'est le code source annoté en markdown qui est formaté et resservit sous forme de pages html<br>
+                en fonction de la solution utilisée, la doc générée peut contenir un moteur de recherche, une TOC, la possibilité de générer et télécharge un PDF (..)<br>
+                beaucoup de docs utilisent le Markdown<br>
+                <a href="http://fr.wikipedia.org/wiki/Markdown" class="link--ext">
+                    markdown
+                </a><br>
+                Docco<br>
+                <a href="http://jashkenas.github.io/docco/" class="link--ext">
+                    docco
+                </a><br>
+                Groc<br>
+                nécessite l'installation de python<br>
+                <a href="https://github.com/nevir/groc" class="link--ext">
+                    groc
+                </a><br>
+                pour héberger la doc d'un projet, on peut utiliser readthedoc.org : hébergement gratuit de docs, sans pub<br>
+                public par défaut, on peut choisir de rendre une doc protégée / privée<br>
+                la doc est versionnée, et linkée au repo github : à chaque push on reconstruit la doc et les exports, en définissant le nombre de versions maintenues<br>
+                <a href="readthedocs.org" class="link--ext">
+                    readthedocs
+                </a><br>
+            </li>
+            <li class="topic">
+                Spriting<br>
+                référence sur le spriting : GLUE options multiples (dépendance Python)<br>
+                <a href="https://github.com/jorgebastida/glue" class="link--ext">
+                    glue
+                </a>
+                <a href="https://glue.readthedocs.org/en/latest/" class="link--ext">
+                    glue doc
+                </a>
+            </li>
+            <li class="topic">
+                font iconiques<br>
+                voir la font Awesome, construite pour Bootstrap<br>
+                peut servir de banque de pictos avec accès à toutes les règles css font<br>
+                utiliser des fonts pro / attention aux problèmes d'accessibilité : les font iconique sont liées à des caractères unicodes, qui peuvent être prononcés et provoquer une pollution sonore sur les font non professionnelles<br>
+                le Stellar Plane est l'espace de caractères unicode reservés non pronnoncés par logiciel de lecture vocale<br>
+                utiliser icomoon pour customiser une font inconique à base de plusieurs font existantes<br>
+                font Awesome<br>
+                <a href="http://fortawesome.github.io/Font-Awesome/" class="link--ext">
+                    awesome
+                </a><br>
+                icomoon,<br>
+                <a href="http://icomoon.io/" class="link--ext">
+                    icomoon
+                </a>
+            </li>
+            <li class="topic">
+                Minification<br>
+                les outils de minification réécrivent le code avec des algo différents pour optimiser<br>
+                plus performant pour le js : uglify v2<br>
+                plus performant pour le css : YUI css compressor<br>
+                conseillé de compiler sass en version non compressées et de minifier avec YUI<br>
+                pour la compression des images : jpgMini<br>
+                <a href="http://www.jpegmini.com/" class="link--ext">
+                    jpgmini
+                </a><br>
+                peut être une solution de prendre une image HD / la compresser à mort / la servir en dimensions fixe<br>
+                pour des détails sur les écrans Retina<br>
+                <a href="http://retinafy.me/" class="link--ext">
+                    article
+                </a><br>
+                pour tout ce qui est textuel (html/css/js/json/svg..) : se servir de Gzip<br>
+                l'idéal est de CDNiser ses assets / servir à partir d'un serveur dédié ou éventuellement les ventiller depuis un serveur unique mais en les servant via des sous domaines, ça isole aussi le chargement des asset du chargement des cookies<br>
+                <a href="http://wiki.nginx.org/Main" class="link--ext">
+                    nginx
+                </a><br>
+                CDN amazon / Fast.ly -> généralement un service first tier quasi gratuit<br>
+            </li>
+        </ul>
+    </section>
+    <footer class="layout-full formation__footer">
+        <div class="layout-centered footer">
+            <p>
+                footer.
+            </p>
+        </div>
+    </footer>
+	</div>
+	<script src="js/vendor/jquery-1.11.0.min.js"></script>
+	<!-- script src="js/vendor/jquery-1.11.0.min.map"></script> -->
+	<script src="js/plugins.js"></script>
+	<script src="js/main.js"></script>
+</body>
+</html>

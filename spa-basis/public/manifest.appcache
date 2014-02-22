@@ -1,0 +1,26 @@
+CACHE MANIFEST
+
+# Serial: 20131205 v4
+
+CACHE:
+/stylesheets/app.css
+/socket.io/socket.io.js
+/javascripts/vendor.js
+/javascripts/app.js
+/images/spinner.gif
+/apple-touch-icon.png
+/apple-touch-icon-72x72.png
+/apple-touch-icon-114x114.png
+/apple-touch-icon-144x144.png
+/favicon.ico
+/fonts/glyphicons-halflings-regular.eot
+/fonts/glyphicons-halflings-regular.svg
+/fonts/glyphicons-halflings-regular.ttf
+/fonts/glyphicons-halflings-regular.woff
+http://maps.gstatic.com/mapfiles/place_api/icons/bar-71.png
+http://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png
+http://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png
+http://maps.gstatic.com/mapfiles/place_api/icons/wine-71.png
+
+NETWORK:
+*

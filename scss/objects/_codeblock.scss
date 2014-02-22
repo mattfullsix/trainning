@@ -1,0 +1,23 @@
+/*------------------------------------*\
+    _codeblock.scss
+\*------------------------------------*/
+/**
+ *
+ * styling the <code> tag
+ * =code..........code block
+ *
+ */
+
+/**
+* =code
+*/
+pre {
+    @extend .extd-naked;
+    background:none $code-light;
+    margin:5px;
+    padding:5px;
+}
+
+code, .code {
+    @extend .extd-naked;
+}

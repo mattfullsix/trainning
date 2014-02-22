@@ -1,0 +1,35 @@
+/*------------------------------------*\
+    _lists.scss
+\*------------------------------------*/
+/**
+ *
+ * styling the lists element
+ * =lists......base lists
+ * =items......base list items
+ *
+ */
+
+/**
+* =lists
+*/
+ul, ol, dl {
+	@extend .extd-naked;
+    list-style-type:none;
+}
+
+/**
+* =items
+*/
+li {
+	@extend .extd-naked;
+    /* mediaqueries */
+    @include media-query(desk) {
+        padding:10px 0 10px 0;
+    }
+    @include media-query(lap) {
+        padding:10px 0 10px 0;
+    }
+    @include media-query(palm) {
+        padding:10px 0 10px 0;
+    }
+}
