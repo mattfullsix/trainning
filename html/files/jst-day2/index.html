@@ -1,0 +1,670 @@
+<!doctype html>
+<html lang="fr">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>JS Total • 2ème partie, 19/02/2014</title>
+
+    <meta name="author" content="Christophe Porteneuve">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script>
+      // If the query includes 'print-pdf' we'll use the PDF print sheet
+      document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+
+    <!-- <link rel="stylesheet" href="lib/zenburn.css"> -->
+    <!-- <link rel="stylesheet" href="lib/github.css"> -->
+    <link rel="stylesheet" href="lib/solarized_light.css">
+  </head>
+
+  <body class="no-anims">
+
+    <div class="reveal">
+
+      <!-- Used to fade in a background when a specific slide state is reached -->
+      <div class="state-background"></div>
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section id="intro">
+          <h1>JS Total</h1>
+          <h3 class="inverted">2ème partie • 19/02/2014</h3>
+          <h4>Christophe Porteneuve @ JS Attitude &amp; Jean-Pierre Vincent</h4>
+          <script>
+            // Delicously hacky. Look away.
+            if( navigator.userAgent.match( /(iPhone|iPad|iPod|Android)/i ) ) document.write( '<p style="color: rgba(0,0,0,0.3); text-shadow: none;">('+'Tap to navigate'+')</p>' );
+          </script>
+        </section>
+
+        <section id="overview">
+          <h1>JS Total</h1>
+          <h4>4 journées du 18 au 21 février</h4>
+
+          <ol>
+            <li>Aujourd’hui : Outils, DevTools, modules et templating</li>
+            <li>Demain : développement d’une SPA complète</li>
+            <li>Vendredi : industrialisation et web mobile</li>
+          </ol>
+        </section>
+
+        <section id="edit-code">
+          <section class="chapter">
+            <h1>Pondre le code</h1>
+            <h4>Mon éditeur chéri…</h4>
+          </section>
+
+          <section id="jslint">
+            <h1>JSLint</h1>
+
+            <p><q>guaranteed to hurt your feelings</q></p>
+            <p>Ce bon vieux Doug…</p>
+            <p>Ne tolérait initialement aucune déviation</p>
+            <p>Désormais configurable</p>
+            <p>Je suis plutôt d'accord avec <a href="http://www.jslint.com/lint.html">toutes ses recos</a>, donc…</p>
+            <p><a href="http://www.jslint.com">jslint.com</a></p>
+          </section>
+
+          <section id="jshint">
+            <h1>JSHint</h1>
+
+            <p>Plus flexible/souple/tolérant</p>
+            <p>A grandi au-delà de ce but originel pour faire de l'analyse statique de code (SCA) et fournir des recos de plus haut niveau aussi (complexité cyclomatique, etc.</p>
+            <p><a href="http://www.jshint.com">jshint.com</a></p>
+          </section>
+
+          <section id="beautifiers">
+            <h1>Beautifiers</h1>
+
+            <p><a href="http://jsbeautifier.org/">JSBeautifier.org</a> et ses plugins (ex. pour <a href="https://github.com/jdc0589/JsFormat">Sublime Text 2</a>)</p>
+            <p><a href="https://github.com/mishoo/UglifyJS2">UglifyJS</a> (Node) fait <i>aussi</i> du <i>beautifying</i>…</p>
+            <p>Vous avez peut-être des fonctions inhérentes dans vos éditeurs ou EDI, etc.</p>
+            <p>Pratique comme filtres automatiques dans un VCS…</p>
+          </section>
+        </section>
+
+        <section id="debug-consoles">
+          <section class="chapter">
+            <h1>Déboguer le desktop</h1>
+            <h4>Console et panneaux avancés</h4>
+
+            <p>(et aussi : <a href="http://discover-devtools.codeschool.com/">Discover DevTools</a> et <a href="http://www.youtube.com/playlist?list=PLNYkxOF6rcIBQ8j3J_PyM8JLAGKqZRByw">The Breakpoint</a>)</p>
+          </section>
+
+          <section id="console">
+            <h1>La console</h1>
+
+            <p>Bien plus que <code>console.log</code> !</p>
+            <p>Complétion, Cmd+K/Ctrl+L, Shift+Return…</p>
+            <p><a href="http://www.youtube.com/watch?v=4mf_yNLlgic&noredirect=1">Console Power User</a> !</p>
+            <p>time / timeEnd</p>
+            <p>dir</p>
+            <p>$_</p>
+            <p>$0 / inspect(el), Force Element State, $$</p>
+            <p>monitorEvents, Break On… (+ Elements > Event Listeners)</p>
+          </section>
+
+          <section id="panel-scripts">
+            <h1>Le panneau Sources</h1>
+
+            <p>Naviguer dans les sources ; iframes ; workers !</p>
+            <p>Le pas à pas, en détail</p>
+            <p>Des breakpoints sur <strong>tout</strong> !</p>
+            <p>Expressions espions (watches)</p>
+            <p>Pile d'appels (call stack).  Noms de fonctions.</p>
+            <p>Portée</p>
+            <p>Gestion des exceptions</p>
+            <p><i>Beautifying</i> !</p>
+          </section>
+
+          <section id="panel-resources">
+            <h1>Le panneau Resources</h1>
+
+            <p>Tout ce qui est stocké en local :</p>
+
+            <ul>
+              <li>Ressources chargées (catégorisées)</li>
+              <li>Cookies</li>
+              <li>Stockage session et local</li>
+              <li>Bases de données</li>
+              <li>AppCache</li>
+            </ul>
+          </section>
+
+          <section id="panel-network">
+            <h1>Le panneau Network</h1>
+
+            <p>Analyse des performances de chargement</p>
+            <p>Distinction latence / chargement</p>
+            <p>Visualisation détaillée (en-têtes, corps, preview…)</p>
+            <p>Mode persistent (record)</p>
+            <p>Toute l'activité : ressources, XHR, WebSockets…</p>
+            <p>À compléter par…</p>
+          </section>
+
+          <section id="panel-timeline">
+            <h1>Le panneau Timeline</h1>
+
+            <p>Analyse des performances d'exécution</p>
+            <p>Chargement / Parsing / Rendering / Painting</p>
+            <p>Groupes asynchrones</p>
+            <p>Monitoring événements, FPS, RAM ; GC !</p>
+            <p>Mode persistent, là aussi.</p>
+            <p>Réduction du bruit (&lt; 15ms)</p>
+          </section>
+
+          <section id="panel-profiles">
+            <h1>Le panneau Profiles</h1>
+
+            <p>Préalable <strong>obligatoire</strong> à l'optimisation !</p>
+            <p>Pas seulement JS : sélecteurs CSS et occupation RAM</p>
+            <p>Profils/snapshots nommés + persistence possible</p>
+          </section>
+
+          <section id="panel-audits">
+            <h1>Le panneau Audits</h1>
+
+            <p>Genre DOM Monster + GTMetrix…</p>
+            <p>Performances <em>loadtime</em> + <em>runtime</em></p>
+            <p>État actuel ou dès chargement</p>
+            <p>Voir aussi <a href="http://javascriptrocks.com/performance/">JS Performance Rocks!</a></p>
+          </section>
+        </section>
+
+        <section id="debug-remote">
+          <section class="chapter">
+            <h1>Déboguer à distance</h1>
+            <h4>sur les mobiles</h4>
+          </section>
+
+          <section id="weinre">
+            <h1>Weinre</h1>
+            <h4>WEb INspector REmote</h4>
+
+            <p>Le WebInspector de WebKit (Chrome/Saf), connecté à un navigateur mobile via un serveur</p>
+            <p>Fait partie de Apache Cordova (ex Phonegap)</p>
+            <p><a href="http://people.apache.org/~pmuellr/weinre/docs/latest/">Les docs chez Apache</a></p>
+          </section>
+
+          <section id="adobe-edge-inspect">
+            <h1>Adobe Edge Inspect</h1>
+            <h4>(ex Adobe Shadow)</h4>
+
+            <p>Solution complète incluant Weinre (date un peu)</p>
+            <p>Logiciel desktop + extension Chrome + app mobile</p>
+            <p>Nécessite un compte Adobe Creative Cloud<br/>(gratuit pour 1 périphérique)</p>
+            <p>Captures d'écran, etc.</p>
+            <p><a href="http://html.adobe.com/edge/inspect/">Ça se passe ici</a></p>
+          </section>
+
+          <section id="android-specific">
+            <h1>Spécifiques Android</h1>
+
+            <p>Chrome : <a href="https://developers.google.com/chrome/mobile/docs/debugging">debugging distant via la version desktop</a> en USB (nécessite toutefois le SDK Android + la config en mode développement du téléphone)</p>
+
+            <p>Firefox (Fennec) : depuis la 15, <a href="https://hacks.mozilla.org/2012/08/remote-debugging-on-firefox-for-android/">debugging distant</a> simple à configurer, via TCP/IP (ou USB + ADB forwarding)</p>
+          </section>
+
+          <section id="mobile-safari-specific">
+            <h1>Spécifique Mobile Safari</h1>
+
+            <p>Sur iOS 5.x, on avait <a href="http://www.iwebinspector.com/">iWebInspector</a></p>
+            <p>Depuis iOS 6 on peut connecter via USB le Web Inspector de Safari</p>
+            <p><a href="http://developer.apple.com/library/safari/#documentation/appleapplications/Reference/SafariWebContent/DebuggingSafarioniPhoneContent/DebuggingSafarioniPhoneContent.html#//apple_ref/doc/uid/TP40006515">Docs SDK</a> et <a href="http://www.mobilexweb.com/blog/iphone-5-ios-6-html5-developers">review générale</a></p>
+            <p><a href="https://github.com/google/ios-webkit-debug-proxy">iOS WebKit Debug Proxy</a> (Lion+)</p>
+          </section>
+        </section>
+
+        <section id="preprocessors">
+          <section class="chapter">
+            <h1>Préprocesseurs</h1>
+            <h4>Parce que des fois on en veut plus</h4>
+          </section>
+
+          <section id="less">
+            <h1>LESS</h1>
+
+            <p>Perdait du terrain face à SASS… et puis Bootstrap !</p>
+            <p>Historiquement assez limité, a repris du poil de la bête dans les développements récents ; mais les wrappers (ex. RubyGem) ne suivent pas toujours…</p>
+            <p>Variables et expressions, imbrication, mixins « simples »</p>
+            <p>Ne <strong>jamais</strong> utiliser le processeur client (<tt>less.js</tt>) en production !</p>
+            <p>Préférer les watchers (builtin ou Guard)… et LiveReload ?</p>
+            <p><a href="http://lesscss.org/">lesscss.org</a></p>
+          </section>
+
+          <section id="less-demo">
+            <h1>LESS : exemple</h1>
+
+            <!-- TODO: add lesscss.org/js/hiless.js, disable highlight.js on this and switch? -->
+            <pre><code class="language-css">/* Mixin */
+@base: #663333;
+@complement1: spin(@base, 180);
+@complement2: darken(spin(@base, 180), 5%);
+@lighten1: lighten(@base, 15%);
+@lighten2: lighten(@base, 30%);
+
+/* ... */
+
+.box-shadow(@style, @c) when (iscolor(@c)) {
+  box-shadow:         @style @c;
+  -webkit-box-shadow: @style @c;
+  -moz-box-shadow:    @style @c;
+}
+.box-shadow(@style, @alpha: 50%) when (isnumber(@alpha)) {
+  .box-shadow(@style, rgba(0, 0, 0, @alpha));
+}
+.box {
+  color: saturate(@base, 5%);
+  border-color: lighten(@base, 30%);
+  div { .box-shadow(0 0 5px, 30%) }
+}</code></pre>
+          </section>
+
+          <section id="sass">
+            <h1>SASS / SCSS</h1>
+
+            <p>Cousin germain de HAML ; « LESS stéroïdé »</p>
+            <p>SCSS === SASS 3&nbsp;; sur-ensemble de CSS3.</p>
+            <p>Boost depuis que dans Rails par défaut</p>
+            <p>Idem LESS + mixins avancés, @extend, @for/each/while…</p>
+            <p>Excellente série de mixins : <a href="http://thoughtbot.com/bourbon/">Bourbon</a></p>
+            <p>Là aussi, y'a des watchers…</p>
+            <p><a href="http://sass-lang.com/">sass-lang.com</a></p>
+          </section>
+
+          <section id="scss-demo">
+            <h1>SCSS : exemple</h1>
+
+            <!-- TODO: SYNTAX HIGHLIGHTING FOR SASS -->
+            <pre><code class="language-css">#navbar {
+  $navbar-width: 800px;
+  $items: 5;
+  $navbar-color: #ce4dd6;
+
+  width: $navbar-width;
+  border-bottom: 2px solid $navbar-color;
+
+  li {
+    float: left;
+    width: $navbar-width/$items - 10px;
+
+    background-color: lighten($navbar-color, 20%);
+    &:hover {
+      background-color: lighten($navbar-color, 10%);
+    }
+  }
+}</code></pre>
+          </section>
+
+          <section id="stylus">
+            <h1>Stylus</h1>
+
+            <p>J'aime &hearts; :-)</p>
+            <p>Par les types qui font Socket.IO et plein de trucs Node</p>
+            <p>Syntaxe flexible, adaptable à vos goûts</p>
+            <p>Transparence des mixins/prefixers</p>
+            <p>Petites syntaxes <strong>qui tuent</strong></p>
+            <p><a href="http://learnboost.github.com/stylus/">learnboost.github.com/stylus</a></p>
+          </section>
+
+          <section id="stylus-demo">
+            <h1>Stylus : exemple</h1>
+
+            <pre><code class="language-stylus">border-radius()
+  -webkit-border-radius arguments
+  -moz-border-radius arguments
+  border-radius arguments
+
+body
+  font 12px Helvetica, Arial, sans-serif
+
+a.button
+  border-radius 5px</code></pre>
+          </section>
+
+          <section id="coffeescript">
+            <h1>CoffeeScript</h1>
+
+            <p>Juste une tuerie™</p>
+            <p>Transpiler JavaScript (y'en a plein)</p>
+            <p>Pas <strong>du tout</strong> que pour les n00bs : chouchou des gourous aussi…  Inspire énormément ES.next.</p>
+            <p>Évite les pièges, promeut les bonnes pratiques, améliore les perfs, sauve des chatons.</p>
+            <p>De plus en plus de libs et frameworks majeurs l'utilisent comme langage de dev.</p>
+            <p><a href="http://coffeescript.org/">coffeescript.org</a></p>
+          </section>
+
+          <section id="coffeescript-demo">
+            <h1>Coffee : exemple</h1>
+
+            <pre><code>awardMedals = (first, second, others...) ->
+  gold   = first
+  silver = second
+  rest   = others
+
+math =
+  root:   Math.sqrt
+  square: square
+  cube:   (x) -> x * square x
+
+foods = ['broccoli', 'spinach', 'chocolate']
+eat food for food in foods when food isnt 'chocolate'
+
+yearsOld = max: 10, ida: 9, tim: 11
+
+ages = for child, age of yearsOld
+  "#{child} is #{age}"
+
+letTheWildRumpusBegin() unless answer is no</code></pre>
+          </section>
+        </section>
+
+        <section id="livereload">
+          <h1>LiveReload</h1>
+
+          <p>Système client/serveur qui détecte les changement dans des fichiers et notifie le navigateur pour qu'il recharge <strong>la ressource concernée</strong>.</p>
+          <p>Idéal pour l'intégration CSS.  Moins pour JS et HTML…</p>
+          <p>Mappings nécessaires dans le cas d'une concaténation ou de préprocesseurs (type Asset Pipeline)</p>
+          <p>Attention sur les derniers navigateurs, l’install peut changer.</p>
+          <p><a href="http://livereload.com/">livereload.com</a></p>
+        </section>
+
+        <section id="what-can-we-use">
+          <section class="chapter">
+            <h1>À quoi a-t-on droit ?</h1>
+            <h4>Et comment compenser ?</h4>
+          </section>
+
+          <section id="refs">
+            <h1>Références</h1>
+
+            <p>
+              <a href="http://caniuse.com/">CanIUse</a>
+              <span class="fragment">+ <a href="http://caniuse.com/#stats_import">Google Analytics</a> = <strong>Awesome</strong> !</span>
+            </p>
+            <p class="fragment"><a href="http://html5test.com/">HTML5Test</a>&nbsp;: et ton navigateur, il roxxe&nbsp;?</p>
+          </section>
+
+          <section id="modernizr">
+            <h1>Modernizr</h1>
+
+            <p>In-page feature detection</p>
+            <p>Sans doute le seul script forcément à chargement synchrone, et dans le head :-)</p>
+            <p>À peu près tous les aspects de CSS2/3 et « HTML5 »</p>
+            <p>Classes positives/négatives sur le document : évite au passage de saloper nos feuilles à coups de hacks CSS</p>
+            <p><a href="http://modernizr.com/">modernizr.com</a></p>
+          </section>
+
+          <section id="shims">
+            <h1>Shims</h1>
+
+            <p>Un shim est un ersatz, un substitut qui tente de fournir une API identique (ou au moins équivalente) à celle d'une fonction non prise en charge par l'environnement (typiquement le navigateur)</p>
+            <p>Y'en a <a href="https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-Browser-Polyfills">plein</a>&nbsp;!</p>
+            <p>Les fameux <a href="http://code.google.com/p/ie7-js/">IEx.js</a> de Dean Edwards, <a href="http://raphaeljs.com/">Raphaël</a>, <a href="https://github.com/afarkas/html5shiv">html5shiv</a>, <a href="http://code.google.com/p/explorercanvas/">ExCanvas</a>, <a href="http://sublimevideo.net/">SublimeVideo</a>, <a href="http://socket.io/">Socket.IO</a>, <a href="https://github.com/kriskowal/es5-shim/">es5-shim</a>, <a href="https://github.com/pbakaus/transformie">Transformie</a>, <a href="http://css3pie.com/">PIE</a>…</p>
+          </section>
+        </section>
+
+        <section id="codebase">
+          <section class="chapter">
+            <h1>Organiser la codebase</h1>
+          </section>
+
+          <section id="modules">
+            <h1>Modules</h1>
+
+            <p><a href="http://requirejs.org/docs/why.html">Pourquoi des modules ?</a></p>
+            <p><a href="http://www.commonjs.org/specs/modules/1.0/">CommonJS</a></p>
+            <p><a href="https://github.com/amdjs/amdjs-api/wiki/AMD">AMD</a></p>
+            <p><a href="http://wiki.ecmascript.org/doku.php?id=harmony:modules">Harmony</a></p>
+          </section>
+
+          <section id="commonjs">
+            <h1>CommonJS</h1>
+
+            <p>Le format historique, synchrone, popularisé par Node</p>
+            <p>On parle en fait de CommonJS/1.0 (plein d'extensions…)</p>
+            <p>Très facile à comprendre :</p>
+
+            <br/>
+            <p class="fragment"><code>exports.<i>key</i> = <i>value</i></code></p>
+            <p class="fragment"><code><i>mod</i> = require('<i>pathspec</i>')</code></p>
+          </section>
+
+          <section id="commonjs-2">
+            <h1>CommonJS</h1>
+            <p><img src="assets/commonjs.png"></p>
+          </section>
+
+          <section id="amd">
+            <h1>AMD</h1>
+
+            <p>Mais <a href="http://requirejs.org/docs/whyamd.html">pourquoi&nbsp;?</a></p>
+            <p>Asynchronous Module Definition</p>
+            <p>Conçu notamment pour les browsers</p>
+            <p>Tout module CommonJS peut être « enrobé » en AMD</p>
+            <p>Principal loader : <a href="http://requirejs.org/">RequireJS</a></p>
+            <p>Clé de voute :</p>
+            <br/>
+            <p><code>define('<i>name</i>', [<i>path, …</i>], <i>cb</i>(<i>mod, …</i>) {})</code></p>
+          </section>
+
+          <section id="amd-2">
+            <h1>AMD</h1>
+            <p><img src="assets/amd.png"></p>
+          </section>
+
+          <section id="harmony-modules">
+            <h1>Modules Harmony</h1>
+
+            <p>Le besoin est devenu si fort, en cette ère de <q>application-scale JavaScript</q>, que le TC39 <a href="http://wiki.ecmascript.org/doku.php?id=harmony:modules">se penche sur la question pour de bon</a>.</p>
+            <p>Harmony a donc une proposition pour la prise en charge native de modules, et on ne va pas tarder à voir des implémentations de test.</p>
+            <p>Syntaxe pas terrible à ce stade, philosophiquement proche de AMD (forcément…), mais superficiellement proche de CommonJS :-)</p>
+          </section>
+
+          <section id="mix-modules">
+            <h1>AMD + CommonJS ?</h1>
+
+            <p>Lorsqu'on préfère concaténer que multiplier les requêtes, rien n'empêche de recourir à CommonJS dans le navigateur…</p>
+            <p>…ou même à AMD, qui est ensuite converti en bloc unique et donc synchrone !</p>
+            <p>On trouve par exemple la première approche dans Brunch.io</p>
+            <p>La seconde est au cœur du RequireJS Optimizer : <a href="http://requirejs.org/docs/optimization.html">r.js</a></p>
+            <h2><strong>Exercice !</strong></h2>
+          </section>
+        </section>
+
+        <section id="templating">
+          <section class="chapter">
+            <h1>Templating</h1>
+            <h4>Un sujet très en vue</h4>
+          </section>
+
+          <section id="which-side">
+            <h1>Serveur ou client ?</h1>
+
+            <p>Guerre de religion n°1</p>
+            <p>Récemment, ça veut dire MVC-mania vs. PJAX</p>
+            <p>Comme toujours, <strong>ça dépend</strong></p>
+            <p>Côté serveur on fait ce qu'on veut…  Mais dans JS Total, on va s'intéresser au côté client.</p>
+          </section>
+
+          <section id="handlebars">
+            <h1>Handlebars</h1>
+
+            <p>En gros, successeur de Mustache</p>
+            <p>Donc l'école texte + <code>innerHTML</code></p>
+            <p>On garde tout mais on étend avec <code>#else</code> et les helpers (dont des helpers de bloc, ce qui ouvre des horizons…)</p>
+            <p><a href="http://handlebarsjs.com/">handlebarsjs.com</a></p>
+          </section>
+
+          <section id="jade">
+            <h1>Jade</h1>
+
+            <p>Le truc qui déchire tout !</p>
+            <p>Pour simplifier, HAML côté client. Mais en mieux :-)</p>
+            <p>Servir frais avec du Stylus</p>
+            <p><a href="http://jade-lang.com/">jade-lang.com</a></p>
+          </section>
+
+          <section id="data-binding">
+            <h1>Data binding</h1>
+
+            <p>C'est l'autre école : mise à jour chirurgicale automatique du DOM et de la couche modèle (bindings entre la couche modèle et la couche vue, événements dans les deux sens).</p>
+            <p>Geek appeal, mais pas forcément plus performant (coût significatif de l'observation/abstraction)</p>
+
+            <p>
+              Approche de <a href="http://angularjs.org/">AngularJS</a>,
+              <a href="http://knockoutjs.com/">KnockoutJS</a> et
+              <a href="http://batmanjs.org/">BatmanJS</a> (entre autres).
+            </p>
+
+            <h2><strong>Exercice KnockoutJS !</strong></h2>
+          </section>
+        </section>
+
+        <section id="frameworks">
+          <section class="chapter">
+            <h1>Frameworks</h1>
+          </section>
+
+          <section id="why-frameworks">
+            <h1>Dis papa pourquoi ?</h1>
+
+            <p><strong>Parce que !</strong></p>
+            <p>Dès qu'on commence à avoir une masse de code, un formalisme et un socle bien testé et bien maintenu deviennent indispensables.  C'est comme pour le côté serveur !</p>
+
+            <p>On perçoit quelques grandes catégories :</p>
+
+            <p>La base : le squelette de MVC, sans plus</p>
+            <p>Les <i>full clients</i> : la totale… pour le côté client</p>
+            <p>Les <i>full stacks</i> : client + serveur, façon Symfony/Rails. Rendu possible par l'émergence de Node</p>
+          </section>
+
+          <section id="frameworks-basic">
+            <h1>La base</h1>
+
+            <p><a href="http://backbonejs.org/">Backbone</a></p>
+            <p>(on voudra souvent ajouter des plugins)</p>
+            <p>(voire <a href="http://marionettejs.com/">Marionnette</a>)</p>
+          </section>
+
+          <section id="frameworks-full-client">
+            <h1>Full Client</h1>
+
+            <p><a href="http://emberjs.com/">Ember.js</a></p>
+            <p><a href="http://angularjs.org/">Angular.js</a></p>
+            <p>Backbone + <a href="http://marionettejs.com/">Marionette</a></p>
+            <p><a href="https://github.com/chaplinjs/chaplin">Chaplin</a></p>
+            <p><a href="http://batmanjs.org/">BatmanJS</a></p>
+            <p>…</p>
+          </section>
+
+          <section id="frameworks-full-stack">
+            <h1>« full stack »</h1>
+
+            <p><a href="http://towerjs.org/">Tower.js</a></p>
+            <p class="quiet">(rien à voir avec <a href="http://www.git-tower.com/">Tower</a>)</p>
+            <p><a href="http://compoundjs.com/">CompoundJS</a> (ex-RailwayJS)</p>
+            <p><a href="http://walmartlabs.github.com/thorax/">Thorax</a></p>
+            <p>…</p>
+          </section>
+
+          <section id="frameworks-tooling">
+            <h1>Outillage dev</h1>
+
+            <p><a href="http://brunch.io/">Brunch.io</a></p>
+            <p><a href="http://yeoman.io/">Yeoman</a></p>
+            <!-- https://github.com/brunch/brunch/issues/408 (Brunch/Yeoman comparison as of Sep 2012) -->
+          </section>
+        </section>
+
+        <section id="next-day">
+          <h1>À suivre…</h1>
+
+          <h3>Coder la SPA</h3>
+
+          <ul>
+            <li>Architecture et déroulé du boot</li>
+            <li>Stockage en session</li>
+            <li>Moment.js</li>
+            <li>Vues imbriquées</li>
+            <li>Géolocalisation et Google Maps Places</li>
+            <li>Modèles Backbone et persistence serveur</li>
+            <li>Web sockets</li>
+            <li>Stockage local</li>
+            <li>Online/offline et AppCache</li>
+          </ul>
+
+          <h3>À demain&nbsp;!</h3>
+        </section>
+      </div>
+
+      <!-- The navigational controls UI -->
+      <aside class="controls">
+        <a class="left" href="#">&#x25C4;</a>
+        <a class="right" href="#">&#x25BA;</a>
+        <a class="up" href="#">&#x25B2;</a>
+        <a class="down" href="#">&#x25BC;</a>
+      </aside>
+
+      <!-- Displays presentation progress, max value changes via JS to reflect # of slides -->
+      <div class="progress"><span></span></div>
+    </div>
+
+    <!-- Optional libraries for code syntax highlighting and classList support in IE9 -->
+    <script src="lib/highlight.js"></script>
+    <script src="lib/classList.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+      // Parse the query string into a key/value object
+      var query = {};
+      location.search.replace( /[A-Z0-9]+?=(\w*)/gi, function(a) {
+        query[ a.split( '=' ).shift() ] = a.split( '=' ).pop();
+      } );
+
+      // Fires when a slide with data-state=customevent is activated
+      Reveal.addEventListener( 'customevent', function() {
+        alert( '"customevent" has fired' );
+      } );
+
+      // Fires each time a new slide is activated
+      Reveal.addEventListener( 'slidechanged', function( event ) {
+        // event.previousSlide, event.currentSlide, event.indexh, event.indexv
+      } );
+
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // If true; each slide will be pushed to the browser history
+        history: true,
+
+        // Loops the presentation, defaults to false
+        loop: false,
+
+        // Flags if mouse wheel navigation should be enabled
+        mouseWheel: true,
+
+        // Apply a 3D roll to links on hover
+        rollingLinks: true,
+
+        // UI style
+        theme: query.theme || 'default', // default/neon
+
+        // Transition style
+        transition: query.transition || 'default' // default/cube/page/concave/linear(2d)
+      });
+
+      hljs.initHighlightingOnLoad();
+    </script>
+  </body>
+</html>

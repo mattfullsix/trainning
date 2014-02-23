@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="fr">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>JS Total • 4ème partie, 21/02/2014</title>
+
+    <meta name="author" content="Christophe Porteneuve">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script>
+      // If the query includes 'print-pdf' we'll use the PDF print sheet
+      document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+
+    <!-- <link rel="stylesheet" href="lib/zenburn.css"> -->
+    <!-- <link rel="stylesheet" href="lib/github.css"> -->
+    <link rel="stylesheet" href="lib/solarized_light.css">
+  </head>
+
+  <body class="no-anims">
+
+    <div class="reveal">
+
+      <!-- Used to fade in a background when a specific slide state is reached -->
+      <div class="state-background"></div>
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section id="intro">
+          <h1>JS Total</h1>
+          <h3 class="inverted">4ème partie • 21/02/2014</h3>
+          <h4>Christophe Porteneuve @ JS Attitude &amp; Jean-Pierre Vincent</h4>
+          <script>
+            // Delicously hacky. Look away.
+            if( navigator.userAgent.match( /(iPhone|iPad|iPod|Android)/i ) ) document.write( '<p style="color: rgba(0,0,0,0.3); text-shadow: none;">('+'Tap to navigate'+')</p>' );
+          </script>
+        </section>
+
+        <section id="overview">
+          <h1>JS Total</h1>
+          <h4>4 journées du 18 au 21 février</h4>
+
+          <p>Aujourd’hui&nbsp;: industrialisation et web mobile</p>
+        </section>
+
+        <section id="testing">
+          <section class="chapter">
+            <h1>Tester</h1>
+            <h4>Ce qui vaut pour le back, vaut pour le front</h4>
+          </section>
+
+          <section id="testing-qunit">
+            <h1>QUnit</h1>
+
+            <p>Le principal standard pour les tests unitaires</p>
+            <p class="fragment">Trivial à mettre en place&nbsp;: 1 CSS, 1 id, 1 JS.</p>
+            <p class="fragment">Petit jeu d'assertions couvrant les cas de base</p>
+            <p class="fragment">Gère (à peu près…) l’asynchrone aussi</p>
+            <p class="fragment">Quelques bonnes pratiques à connaître</p>
+            <p class="fragment"><a href="http://qunitjs.com/">qunitjs.com</a></p>
+            <h4 class="fragment">Exercice&nbsp;: ordre naturel de la collection</h4>
+          </section>
+
+          <section id="testing-sinon">
+            <h1>sinon.js</h1>
+            <h4>De qui se moque-t-on&nbsp;?</h4>
+
+            <p><strong>Attention&nbsp;: tuerie</strong></p>
+            <p>Outil de spies/mocks/stubs hyper bien foutu</p>
+            <p>Mocke carrément Ajax, les APIs REST et le temps&nbsp;!</p>
+            <p>Indispensable pour découpler le code testé de ses dépendances externes, ce qui est une bonne pratique incontournable en unitaire/fonctionnel.</p>
+            <p><a href="http://sinonjs.org/">sinonjs.org</a></p>
+          </section>
+
+          <section id="testing-jasmine">
+            <h1>Jasmine</h1>
+
+            <p>Le leader établi des tests d'intégration (on parle aussi d’<em>acceptance tests</em>).  Mais fait aussi de l’unitaire.</p>
+            <p>Plutôt bien foutu.  Nombreux wrappers.</p>
+            <p>Bindings spéciaux pour jQuery, Sinon.js…</p>
+            <p><a href="http://pivotal.github.com/jasmine/">pivotal.github.com/jasmine</a></p>
+            <h4>Exercice&nbsp;: horloge (en temps accéléré)</h4>
+          </section>
+
+          <section id="testing-mocha">
+            <h1>Mocha</h1>
+
+            <p>Universel, issu de Node, particulièrement fort pour tester les aspects <strong>asynchrones</strong></p>
+            <p>Système d’assertions libre (délégué)</p>
+            <p>Contextes imbriqués, before/after classiques</p>
+            <p>Facilités de ciblage temporaire (inclusif/exclusif)</p>
+            <p>Et plein d’autres trucs bien&nbsp;!</p>
+            <p><a href="http://visionmedia.github.com/mocha/">visionmedia.github.com/mocha</a></p>
+          </section>
+
+          <section id="testing-automation">
+            <h1>Automatiser les navigateurs</h1>
+
+            <p><a href="http://seleniumhq.org/">Selenium</a></p>
+            <p><a href="http://karma-runner.github.io/">Karma</a></p>
+            <p><a href="http://phantomjs.org/">PhantomJS</a> et <a href="http://slimerjs.org/">SlimerJS</a></p>
+            <p><a href="http://casperjs.org/">CasperJS</a>, <a href="https://github.com/jonleighton/poltergeist">Poltergeist</a>…</p>
+          </section>
+
+          <section id="testing-paas">
+            <h1>Les VM en PaaS</h1>
+
+            <p><a href="http://www.browserstack.com/">Browserstack</a> (et <a href="http://modern.ie">modern.ie</a>)</p>
+            <p><a href="https://saucelabs.com/">SauceLabs</a></p>
+            <p><a href="https://browserling.com/">Browserling</a></p>
+          </section>
+        </section>
+
+        <section id="documenting">
+          <section class="chapter">
+            <h1>Documenter</h1>
+            <h4>Les autres c’est toi dans 6 mois</h4>
+          </section>
+
+          <section id="doc-jsdoc">
+            <h1>Traditionnel</h1>
+
+            <p><a href="http://usejsdoc.org/">JSDoc 3</a></p>
+            <p>Façon Javadoc&nbsp;: commentaires spéciaux, tags…</p>
+            <p><a href="http://yui.github.com/yuidoc/">YUIDoc</a> est similaire mais plus moderne, et avec un mode serveur/watcher.</p>
+          </section>
+
+          <section id="doc-docco">
+            <h1>Literate</h1>
+
+            <p><a href="http://jashkenas.github.com/docco/">Docco</a> / <a href="http://rtomayko.github.com/rocco/">Rocco</a></p>
+            <p>(démo sur le code final de la SPA)</p>
+          </section>
+
+          <section id="doc-hosting">
+            <h1>Hébergement des docs</h1>
+
+            <p><a href="http://readthedocs.org/">readthedocs.org</a></p>
+            <p>Public / protégé / privé</p>
+            <p>Github / Bitbucket / Webhooks</p>
+            <p>Versionné</p>
+            <p>slugs/rtfd.org, CNAMEs…</p>
+            <p>+ <a href="https://www.google.fr/search?q=site%3Amedia.readthedocs.org+filetype%3Apdf">PDF</a> + manpages</p>
+          </section>
+        </section>
+
+        <section id="optimizing">
+          <section class="chapter">
+            <h1>Optimiser</h1>
+            <h4>Load, Parse, Run, Render</h4>
+          </section>
+
+          <section id="loading-weight">
+            <h1>Chargement</h1>
+            <h4>Ça pèse lourd dans la balance</h4>
+
+            <p class="fragment">Desktop vs. mobile</p>
+            <p class="fragment">Critical Path</p>
+            <p class="fragment">Concaténation</p>
+            <p class="fragment">Spriting, fontes icôniques</p>
+            <p class="fragment">Minification / packing / opti images</p>
+            <p class="fragment">Compression (gzipping)</p>
+            <p class="fragment">Cache HTTP</p>
+            <p class="fragment">CDN / cookieless asset hosting</p>
+          </section>
+
+          <section id="loading-loaders">
+            <h1>Chargement</h1>
+            <h4>Parallélisation</h4>
+
+            <p class="fragment">Synchrone vs. asynchrone</p>
+            <p class="fragment">JS tierce-partie</p>
+            <p class="fragment">Loaders vs. concaténation</p>
+            <p class="fragment">Prefetching</p>
+            <p class="fragment">AppCache</p>
+          </section>
+
+          <section id="parsing">
+            <h1>Parsing</h1>
+
+            <p class="fragment">JS (le packing c’est mal)</p>
+            <p class="fragment">Parsing JS différé</p>
+            <p class="fragment">CSS (gare aux sélecteurs longs)</p>
+            <p class="fragment">Images (optimiser les dimensions)</p>
+            <p class="fragment">DOM (rester svelte)</p>
+          </section>
+
+          <section id="runtime-js">
+            <h1>Exécution JS</h1>
+            <h4>Optis de langage pur</h4>
+
+            <p class="fragment">Loop invariants</p>
+            <p class="fragment">Inlining</p>
+            <p class="fragment">Memoization</p>
+            <p class="fragment">RegExp caching</p>
+            <p class="fragment">Recyclage de tableaux</p>
+            <p class="fragment">Comparaisons strictes</p>
+          </section>
+
+          <section id="runtime-dom">
+            <h1>Manips DOM</h1>
+            <h4>Patterns et anti-patterns</h4>
+
+            <p class="fragment">Réduire la taille au maximum</p>
+            <p class="fragment">Optimisation des sélecteurs</p>
+            <p class="fragment">Lookup caching</p>
+            <p class="fragment">Event delegation</p>
+            <p class="fragment"><code>innerHTML</code> vs. DOM building</p>
+          </section>
+
+          <section id="runtime-timing">
+            <h1>Exécution périodique</h1>
+            <h4>Faire confiance au navigateur</h4>
+
+            <p class="fragment"><code>setTimeout</code> &amp; <code>setInterval</code></p>
+            <p class="fragment"><code>requestAnimationFrame</code>&nbsp;!</p>
+          </section>
+
+          <section id="runtime-workers">
+            <h1>Parallélisation JS</h1>
+            <h4>Des workers quand il faut</h4>
+
+            <p class="fragment">JS est mono-thread</p>
+            <p class="fragment">Je répète&nbsp;: JS est mono-thread</p>
+            <p class="fragment"><strong>sauf que…</strong></p>
+            <p class="fragment">…on a les Web Workers</p>
+            <p class="fragment">Y’a des gros garde-fous</p>
+            <p class="fragment">Cas d’utilisation classiques</p>
+          </section>
+        </section>
+
+        <section id="mobile">
+          <section class="chapter">
+            <h1>Et sur mobile&nbsp;?</h1>
+            <h4>Le nouveau web c’est lui</h4>
+          </section>
+
+          <section id="mobile-constraints">
+            <h1>Contraintes</h1>
+
+            <p>Cool : «&nbsp;HTML5&nbsp;» (CSS3, WebSockets, localStorage…)</p>
+            <p>Dimensions d’image (max 1000 &times; 1000)</p>
+            <p>Cache classique (max 25Ko/fichier, pré-GZip)</p>
+            <p>Appcache (tout sauf la vidéo)</p>
+            <p>Canaux de chargement (2–6 suivant le réseau)</p>
+          </section>
+
+          <section id="mobile-ux">
+            <h1>UX homogène</h1>
+
+            <p>User scaling &amp; <a href="https://developer.mozilla.org/fr/docs/Mobile/Viewport_meta_tag">viewport</a> (initial + modifiable)</p>
+            <p><a href="http://mir.aculo.us/2013/01/26/why-and-how-to-not-use-hover-styles-on-touch-devices/">Pas de survol</a></p>
+            <p>Événements tactiles</p>
+            <p><a href="http://smus.com/mouse-touch-pointer/">pointer.js</a> et les <a href="https://github.com/Polymer/PointerEvents">Pointer Events</a></p>
+            <p><a href="http://www.w3.org/TR/2013/WD-pointerevents-20130115/#the-touch-action-css-property">Tactile en contexte mixte</a></p>
+            <p><a href="http://www.w3.org/TR/mwabp/">Meilleures pratiques du W3C</a></p>
+          </section>
+
+          <section id="mobile-rwd">
+            <h1>Quelle adaptation&nbsp;?</h1>
+
+            <p>Media Queries</p>
+            <p>Responsive Web Design (RWD)</p>
+            <p>UIs distinctes</p>
+          </section>
+
+          <section id="mobile-webapp">
+            <h1>Mobile Web Apps</h1>
+
+            <p>Les meta dédiées
+              (<a href="http://speckyboy.com/2012/05/16/creating-a-mobile-web-application-with-meta-tags/">ici</a> et
+              <a href="http://developer.apple.com/library/safari/#documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html">ici</a>)
+            </p>
+            <p><a href="http://www.html5rocks.com/en/mobile/mobifying/">Plein d'autres astuces</a></p>
+            <p>Add to Home Screen</p>
+            <p>Applis hybrides&nbsp;: quand, pourquoi&nbsp;?</p>
+            <p><a href="http://phonegap.com/">Phonegap</a> / <a href="http://cordova.apache.org/">Cordova</a></p>
+            <p><a href="http://www.mozilla.org/fr/firefoxos/">Firefox OS</a> et le futur…</p>
+          </section>
+        </section>
+
+        <section id="conclusion">
+          <section class="chapter">
+            <h1>Conclusion</h1>
+            <h4>Les meilleures choses ont une fin</h4>
+          </section>
+
+          <section id="conclusion-wrapup">
+            <h1>En résumé…</h1>
+
+            <p>Web front == <strong>power</strong></p>
+            <p>Écosystème de plus en plus riche</p>
+            <p>Essor des applis riches côté client</p>
+            <p>Ça va vite se passer surtout sur mobile</p>
+            <p>JS == langage n°1</p>
+            <p>Y’a quand même de quoi s’éclater…</p>
+          </section>
+
+          <section id="thank-you">
+            <h1>Merci&nbsp;!</h1>
+
+            <p><a href="http://www.js-attitude.fr/">http://www.js-attitude.fr/</a></p>
+            <p><a href="http://twitter.com/jsattitude">@jsattitude</a></p>
+          </section>
+        </section>
+      </div>
+
+      <!-- The navigational controls UI -->
+      <aside class="controls">
+        <a class="left" href="#">&#x25C4;</a>
+        <a class="right" href="#">&#x25BA;</a>
+        <a class="up" href="#">&#x25B2;</a>
+        <a class="down" href="#">&#x25BC;</a>
+      </aside>
+
+      <!-- Displays presentation progress, max value changes via JS to reflect # of slides -->
+      <div class="progress"><span></span></div>
+
+    </div>
+
+    <!-- Optional libraries for code syntax highlighting and classList support in IE9 -->
+    <script src="lib/highlight.js"></script>
+    <script src="lib/classList.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+      // Parse the query string into a key/value object
+      var query = {};
+      location.search.replace( /[A-Z0-9]+?=(\w*)/gi, function(a) {
+        query[ a.split( '=' ).shift() ] = a.split( '=' ).pop();
+      } );
+
+      // Fires when a slide with data-state=customevent is activated
+      Reveal.addEventListener( 'customevent', function() {
+        alert( '"customevent" has fired' );
+      } );
+
+      // Fires each time a new slide is activated
+      Reveal.addEventListener( 'slidechanged', function( event ) {
+        // event.previousSlide, event.currentSlide, event.indexh, event.indexv
+      } );
+
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // If true; each slide will be pushed to the browser history
+        history: true,
+
+        // Loops the presentation, defaults to false
+        loop: false,
+
+        // Flags if mouse wheel navigation should be enabled
+        mouseWheel: true,
+
+        // Apply a 3D roll to links on hover
+        rollingLinks: true,
+
+        // UI style
+        theme: query.theme || 'default', // default/neon
+
+        // Transition style
+        transition: query.transition || 'default' // default/cube/page/concave/linear(2d)
+      });
+
+      hljs.initHighlightingOnLoad();
+    </script>
+  </body>
+</html>

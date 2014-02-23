@@ -4,20 +4,21 @@
 Function.prototype.throttle = function(/* … */) {
   var f = this;
   // …
- 
+
   return function() {
     // …
     return f.apply(this, arguments);
   };
 };
- 
+
+
 // Protocole de test
- 
+
 function sayHi() { console.log(Date.now(), "Hiiiii…"); }
- 
+
 console.log(Date.now());
 hiCoquine = setInterval(sayHi.throttle(1000), 100);
- 
+
 setTimeout(function() { clearInterval(hiCoquine); }, 10000);
 
 
@@ -33,12 +34,12 @@ Function.prototype.throttle = function(minInterval) {
     return f.apply(this, arguments);
   };
 };
- 
+
 // Protocole de test
- 
+
 function sayHi() { console.log(Date.now(), "Hiiiii…"); }
- 
+
 console.log(Date.now());
 hiCoquine = setInterval(sayHi.throttle(1000), 100);
- 
+
 setTimeout(function() { clearInterval(hiCoquine); }, 10000);

@@ -1,0 +1,1301 @@
+<!doctype html>
+<html lang="fr">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>JS Total • 1ère partie, 18/02/2014</title>
+
+    <meta name="author" content="Christophe Porteneuve">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script>
+      // If the query includes 'print-pdf' we'll use the PDF print sheet
+      document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+
+    <!-- <link rel="stylesheet" href="lib/zenburn.css"> -->
+    <!-- <link rel="stylesheet" href="lib/github.css"> -->
+    <link rel="stylesheet" href="lib/tomorrow.css">
+  </head>
+
+  <body class="no-anims">
+
+    <div class="reveal">
+
+      <!-- Used to fade in a background when a specific slide state is reached -->
+      <div class="state-background"></div>
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section id="intro">
+          <h1>JS Total</h1>
+          <h3>1ère partie • 18/02/2014</h3>
+          <h4>Christophe Porteneuve @ JS Attitude</h4>
+          <script>
+            // Delicously hacky. Look away.
+            if( navigator.userAgent.match( /(iPhone|iPad|iPod|Android)/i ) ) document.write( '<p style="color: rgba(0,0,0,0.3); text-shadow: none;">('+'Tap to navigate'+')</p>' );
+          </script>
+        </section>
+
+        <section id="the-guy">
+          <h1>Les types, là, devant</h1>
+
+          <h2>Christophe Porteneuve</h2>
+          <h3>JS Attitude, Git Attitude, Delicious Insights</h3>
+          <p>Paris Web, Prototype.js, script.aculo.us, Rails…</p>
+        </section>
+
+        <section id="overview">
+          <h1>JS Total</h1>
+          <h4>4 journées du 18 au 21 février</h4>
+
+          <ol>
+            <li>Aujourd’hui&nbsp;: JS, le langage pur</li>
+            <li>Demain : Outils, DevTools, modules et templating</li>
+            <li>Jeudi : développement d’une SPA complète</li>
+            <li>Vendredi : industrialisation et web mobile</li>
+          </ol>
+        </section>
+
+        <section id="native-types">
+          <section class="chapter">
+            <h1>Apprendre à connaître</h1>
+            <h4>les types JS natifs</h4>
+          </section>
+
+          <section id="objects">
+            <h1>Objets</h1>
+            <h4>Hashes, maps et dictionaries…</h4>
+
+            <pre><code>var obj = { first: 'Christophe', last: 'Porteneuve', age: 36 };
+obj.first  // => 'Christophe'
+obj['age'] // => 36
+
+obj.first = 'Chris';
+obj['first'] // => 'Chris'
+
+obj[42] = 'yo';
+obj[42]   // => 'yo'
+obj['42'] // => 'yo'
+obj.42    // => SyntaxError
+
+// Itération : for…in (tous JS), for each…in / forEach / map (JS 1.6),
+// ou encore itérateurs / générateurs (JS 1.7) voire properties (JS 1.8.5).</code></pre>
+          </section>
+
+          <section id="string">
+            <h1>String</h1>
+
+            <pre><code>'déjà' < 'demain'              // => false
+'déjà'.localeCompare('demain') // => -1 ('déjà' avant 'demain' -> YEESSS!)
+
+'déjà !'.toLocaleUpperCase()      // => 'DÉJÀ !'
+'ÇA POUTRE'.toLocaleLowerCase()   // => 'ça poutre'
+
+'one,two,three'.split(',')        // => ['one', 'two', 'three']
+'one,,two,three'.split(/\W+/)     // => ['one', 'two', 'three']
+
+'hello'.substring(1)      // => 'ello'
+'hello'.slice(1, -2)      // => 'el' -> [1;length-2[</code></pre>
+          </section>
+
+          <section id="date-init-reading">
+            <h1>Date (init/lecture)</h1>
+
+            <pre><code>new Date                   // Paf maintenant !
+new Date(epochMS)          // Désérialise depuis une représentation numérique
+new Date(rfc2822)          // <=> Date.parse(rfc2822)
+new Date(y,m,d[,h,m,s,ms]) // Valeur découpée.  Manquants à zéro.
+
+<span class="fragment">date.getFullYear()  // JAMAIS getYear, mécréants !</span>
+<span class="fragment">date.getMonth()     // SALETÉ Java-like qui démarre à… zéro (janvier).  Pfff…</span>
+<span class="fragment">date.getDay()</span>       <span class="fragment">// PERDUUUU ! C'est le DOW (Day Of Week), 0 = dim., 6 = s<am.</span>
+<span class="fragment">date.getDate()      // Le jour du mois.  Super logique.</span>
+<span class="fragment">date.getHours()
+date.getMinutes()
+date.getSeconds()
+date.getMilliseconds() // "Milliseconds", un seul mot : une seule initiale.</span>
+
+<span class="fragment">// Heure locale du navigateur/système.  On a les mêmes en getUTCXxx()…</span></code></pre>
+          </section>
+
+          <section id="date-conversion">
+            <h1>Date (conversion)</h1>
+
+            <pre><code>// "J'ai juste lu la doc"
+date.getTime()  // => ex. 1392715517557
+
+// "Je suis un gros r0xx0r qui lit le code de @thomasfuchs"
++date
+
+// Et sinon…
+new Date(1392715517557)
+
+// Mais aussi (car souci pour partir de composantes UTC) :
+Date.UTC(y, m, d, h, mn, s, ms) // => numérique
+
+// Et pour maintenant, du plus long vers le plus court :
+new Date().getTime()
+Date.now() // Le plus rapide et le plus clean, mais IE9+
++new Date  // Dans un shim de Date.now(), alors…</code></pre>
+          </section>
+
+          <section id="date-writing">
+            <h1>Date (écriture&nbsp;?)</h1>
+
+            <pre><code>// 1. Composantes -> Date : constructeur :
+
+var y = 2014, m = 1, d = 18, h = 10, mn = 25, s = 17, ms = 557;
+new Date(y, m, d, h, mn, s, ms);
+
+// 2. Ajouter/retirer un temps donné.  Plus fiable en mode numérique :
+
+var THIRTY_DAYS = 30 * 24 * 60 * 60 * 1000;
+var thirtyDaysFromNow = new Date(Date.now() + THIRTY_DAYS);</code></pre>
+          </section>
+
+          <section id="array-basis">
+            <h1>Array (la base)</h1>
+
+            <pre><code>var names = ['Jean-François', 'Jordan', 'Lionel', 'Loïc', 'Matthieu', 'Nicolas',
+  'Pierre-Olivier', 'Rafik', 'Valentin', 'Yannick'];
+
+names.length
+// => 10. R/W : permet de réutiliser un tableau super-VITE !
+
+names[0]
+// => 'Jean-François'
+
+names[12] = 'Christophe';
+names.length
+// => 13
+
+names[10]
+// => undefined (comme 11): "sparse array"</code></pre>
+          </section>
+
+          <section id="array-iteration">
+            <h1>Array (itération)</h1>
+
+            <pre><code class="language-javascript">var data = [0, 1, 2, 3, 4, 5];
+
+// SAYMAL™
+for (var index = 0; index < data.length; index++)
+  doSomething(data[index]);
+
+// SAYMIEU™
+for (var index = 0, len = data.length; index < len; index++)
+  doSomething(data[index]);
+
+// SAYTOP™ -- quoique : http://jsperf.com/prefix-or-postfix-increment
+for (var index = 0, len = data.length; index < len; ++index)
+  doSomething(data[index]);</code></pre>
+          </section>
+
+          <section id="array-iteration-recent">
+            <h1>Array (JS 1.6+)</h1>
+
+            <pre><code>// for…in itère sur LES PROPRIÉTÉS ÉNUMÉRABLES de N’IMPORTE QUEL OBJET
+var arr = ['hello', 'world', , 'cool'];
+for (var k in arr) console.log(k); // => 0, 1, 3
+
+Array.prototype.etMerde = function etMerde() {};
+for (var k in arr) console.log(k); // => 0, 1, 3, 'etMerde'
+
+// Et JS < 1.8.5 ne nous laisse pas dire « extension non énumérable » :-/
+
+// On fait comment pour un "sparse array" alors ?!
+for (var index = 0, len = arr.length; index < len; ++index) {
+  if (!(index in arr)) continue;   // Ah-ha !
+  console.log(index, arr[index]);
+}</code></pre>
+          </section>
+
+          <section id="array-derived">
+            <h1>Array (extraction)</h1>
+
+            <pre><code>var data = [1, 2, 3];
+
+// arr1.concat(arg…) -> arr2 [déroule sur 1 niveau, ni "shallow" ni "deep"]
+data.concat(4, 5, 6)     // => [1, 2, 3, 4, 5, 6]
+data.concat([4, 5, 6])   // => [1, 2, 3, 4, 5, 6]
+data.concat(4, [5, 6])   // => [1, 2, 3, 4, 5, 6]
+data.concat([4, [5, 6]]) // => [1, 2, 3, 4, [5, 6]] -- 2 niveaux !
+data                     // => [1, 2, 3] -- intact !
+
+// arr.join([sep = ',']) -> String
+data.join()   // => '1,2,3'
+data.join('') // => '123' -- Fréquent en construisant du HTML
+
+// arr1.slice(signedBegin[, signedEnd = length]) -> arr2 -- négatif ok partout !
+data.slice(1)      // => [2, 3]
+data.slice(1, 1)   // => []
+data.slice(1, 2)   // => [2]
+data.slice(1, -1)  // => [2]
+data.slice(-2)     // => [2, 3]
+data.slice(-2, 2)  // => [2]
+data.slice(-2, -1) // => [2]</code></pre>
+          </section>
+
+          <section id="array-writing">
+            <h1>Array (modifier)</h1>
+
+            <pre><code>var arr = ['one', 'two', 'three'];
+arr.push('four');                 // => 4
+arr.push('five', 'six', 'seven'); // => 7
+arr.pop()                  // => 'seven'
+arr                        // => ['one', 'two', 'three', 'four', 'five', 'six']
+arr.shift()                // => 'one'
+arr                        // => ['two', 'three', 'four', 'five', 'six']
+arr.unshift('zero', 'one') // => 7
+arr                        // => ['zero', 'one', 'two', 'three', 'four', 'five', 'six']
+
+// splice(signedIndex, howManyToRemove[, replacingArg…])
+// -- pas confondre avec slice !
+arr.splice(0, 1)      // => ['zero']
+arr.splice(-2, 2)     // => ['five', 'six']
+arr.splice(0, 3, '3') // => ['one', 'two', 'three']
+arr                   // => ['3', 'four']</code></pre>
+          </section>
+
+          <section id="array-genericity">
+            <h1>Array (généricité)</h1>
+
+            <pre><code class="language-javascript">// Toi aussi, déguise-toi en tableau !
+
+var fakeArray = { 0: '!', 1: 'ça torche', 2: 'JavaScript', length: 3 };
+
+fakeArray.join = [].join; fakeArray.reverse = [].reverse;
+fakeArray.reverse().join(' ');
+// => 'JavaScript ça torche !'
+
+<span class="fragment">// Ou alors :
+fakeArray.__proto__ = Array.prototype;
+fakeArray.reverse().join(' ');
+// => 'JavaScript ça torche !'</span>
+
+<span class="fragment">// Méthodes « génériques » : concat, join, pop, push, reverse, shift,
+// slice, sort, splice, toString, unshift.</span></code></pre>
+          </section>
+
+          <section id="dont-use-new">
+            <h1>Je tue le chien si…</h1>
+            <h4>tu utilises bêtement <code>new</code> sur des natifs</h4>
+
+            <pre><code>new String(…)
+new Array(…)
+new Function(…)
+new Boolean(…)
+new Number(…)</code></pre>
+
+            <p><a href="http://www.js-attitude.fr/2012/11/22/pourquoi-jamais-new-sur-natifs-en-js/?utm_source=slides&amp;utm_medium=referrals&amp;utm_campaign=jstotal-laetis" style="font-size: 50%;">L’article détaillé sur JS Attitude</a></p>
+          </section>
+        </section>
+
+        <section id="obscure-stuff">
+          <section class="chapter">
+            <h1>Aspects méconnus</h1>
+          </section>
+
+          <section id="strict-equal">
+            <h1>== ou === ?!</h1>
+
+            <pre><code>42 == '42'        // => true  -- Argh, ça sent le PHP, là…
+null == undefined // => true  -- hmmm…
+null == 0         // => false -- heureusement !
+0 == undefined    // => false -- heureusement !
+0 == false        // => true  -- Façon C…
+1 == true         // => true  -- Façon C…
+42 == true        // => false -- Watcha ?! (x == ToNumber(y), ES3 §11.9.3)
+'0' == false      // => true  -- Woah !
+'' == false       // => true  -- Yowza ! 8-O  On y reviendra…
+NaN == NaN        // => false -- Bin oué, c’est le principe…
+
+// avec ===, fini de jouer : vérif valeur ET TYPE !
+
+42 === '42'        // => false
+null === undefined // => false
+null === 0         // => false
+0 === undefined    // => false
+0 === false        // => false
+'0' === false      // => false
+NaN === NaN        // => false -- rien à faire !</code></pre>
+          </section>
+
+          <section id="brackets">
+            <h1>Le capitaine []</h1>
+
+            <pre><code>// Équivalence stricte statique / dynamique :
+obj.x === obj['x']
+
+// Trop La Lose
+var angle = 60, result;
+if (useSin)
+  result = Math.sin(angle);
+else
+  result = Math.cos(angle);
+
+<span class="fragment">// Moins La Lose
+var angle = 60, result = useSin ? Math.sin(angle) : Math.cos(angle);
+</span>
+<span class="fragment">// Trop La Classe
+var angle = 60, result = Math[useSin ? 'sin' : 'cos'](angle);</span>
+
+<span class="fragment">// Cas classiques (ici, méthodes appelées issues de Prototype) :
+element[display ? 'show' : 'hide']();
+element[(enable ? 'add' : 'remove') + 'Class']('enabled'); // too much</span></code></pre>
+          </section>
+
+          <section id="in-and-delete">
+            <h1>in et delete</h1>
+
+            <pre><code>var translator = { name: 'Christophe', langs: ['fr', 'en'] };
+
+'name' in translator        // => true
+translator.age = 36;
+'age' in translator         // => true
+translator.age = null;
+'age' in translator         // => true
+delete translator.age
+'age' in translator         // => false
+translator.age              // => undefined
+
+0 in translator.langs       // => true
+'0' in translator.langs     // => true
+translator.langs[3] = 'de';
+2 in translator.langs       // => false
+3 in translator.langs       // => true
+delete translator.langs[3]
+translator.langs            // => ['fr', 'en', undefined, undefined]</code></pre>
+          </section>
+
+          <section id="truthy-falsy">
+            <h1>Truthy ou falsy?</h1>
+            <h4>Quand est-on dans le vrai&nbsp;?</h4>
+
+            <pre><code>// 1. undefined, null, false, 0, '', NaN -> false
+// 2. N'importe quoi d'autre             -> true
+
+''  || '(empty)' // => '(empty)' -- pensez aux valeurs de champs de formulaire…
+
+function f(times) {
+  times = times || 3;
+  while (times--) console.log('yo');
+}
+<span class="fragment">f(4) // 4 fois 'yo' -- l’ataraxie me gagne.</span>
+<span class="fragment">f()  // 3 fois 'yo' -- j’en suis tout coi de contentement.</span>
+<span class="fragment">f(0) // 3 fois 'yo' -- ventre saint-gris, je suis fait, vertuchou !</span>
+<span class="fragment">
+function f(times) {
+  if (undefined === times) times = 3; // 0 est valide…
+  while (times--) console.log('yo');
+}
+</span>
+<span class="fragment">// Attention, juste '', pas une chaîne "100% whitespace !"
+'  \t\n  ' ? 'Dommage Éliane' : 'Youpi' // => 'Dommage Éliane'</span></code></pre>
+
+            <p><a href="http://www.js-attitude.fr/2012/09/10/truthy-ou-falsy-en-javascript//?utm_source=slides&amp;utm_medium=referrals&amp;utm_campaign=jstotal-laetis" style="font-size: 50%;">L’article détaillé sur JS Attitude</a></p>
+          </section>
+
+          <section id="parseint">
+            <h1>parseInt, ce farceur</h1>
+
+            <pre><code>var segs = '18/02/2014'.split('/');
+var d = parseInt(segs[0]), m = parseInt(segs[1]) - 1, y = parseInt(segs[2]);
+new Date(y, m, d).toDateString() // => 'Tue Feb 18 2014'
+
+// En environnement non-ES5+ (IE pre-9, Node pre-0.10, etc.)
+segs = '27/09/2013'.split('/');
+d = parseInt(segs[0]), m = parseInt(segs[1]) - 1, y = parseInt(segs[2]);
+new Date(y, m, d).toDateString() // => 'Thu Dec 27 2012' -- MÉKÉKIDI !?
+<span class="fragment">
+parseInt('09')     // => 0 -- AAARGGGHHHH ! (avant ES5)
+parseInt('09', 10) // => 9 -- Ben !?
+</span>
+<span class="fragment">// parseInt(str[, radix]) !</span></code></pre>
+            <p><a href="http://www.js-attitude.fr/2012/12/26/convertir-un-nombre-en-texte-en-javascript/?utm_source=slides&amp;utm_medium=referrals&amp;utm_campaign=jstotal-laetis" style="font-size: 50%;">L’article détaillé sur JS Attitude</a></p>
+          </section>
+
+          <section id="wtfjs">
+            <h1>WTFJS</h1>
+
+            <pre><code>// Les schyzophrènes sont parmi nous…
+typeof NaN // => Number (!)
+
+<span class="fragment">// Le parser n’est pas fini…
+3.toFixed(4) // => SyntaxError</span>
+
+<span class="fragment">// Mais !
+3..toFixed(4) // => '3.0000'</span>
+
+<span class="fragment">// Sinon, moins obscur :
+(3).toFixed(4) // => '3.0000'
+
+// Pas besoin sur les flottants -- Au fait, toujours '0.…', jamais '.…'
+3.14159.toFixed(4) // => '3.1416'</span>
+
+<span class="fragment">// Les nombres qui avancent tout seuls…
+9999999999999999 // => 10000000000000000</span>
+
+<span class="fragment">// De l'intérêt de comprendre les itérateurs ES5…
+[10, 10, 10, 10, 10].map(parseInt) // => [10, NaN, 2, 3, 4]</span></code></pre>
+          </section>
+        </section>
+
+        <section id="constructors-and-prototypes">
+          <section class="chapter">
+            <h1>Constructeurs &amp; Prototypes</h1>
+          </section>
+
+          <section id="class-or-not">
+            <h1>Classe / Pas Classe</h1>
+
+            <ul>
+              <li>«&nbsp;Les classes, c’est bourgeois&nbsp;» — @Mitternacht</li>
+              <li>En JS on a que des objets</li>
+              <li>Objet = fatras de propriétés</li>
+              <li>Propriété = paire&nbsp;: nom + valeur</li>
+              <li>Si la valeur est une fonction, on dit «&nbsp;méthode&nbsp;»&nbsp;!</li>
+            </ul>
+          </section>
+
+          <section id="constructors-intro">
+            <h1>Constructeurs</h1>
+
+            <ul>
+              <li>Fonctions servant à initialiser un nouvel objet. Le nom du constructeur est un peu comme « le nom de la classe »…</li>
+              <li>Toute fonction peut servir de constructeur : il suffit de l’appeler avec l’opérateur <code>new</code>.</li>
+              <li>Elle dispose alors d’une variable implicite <code>this</code>, qui représente la nouvelle « instance ».</li>
+              <li>L’objet créé référence son constructeur : <code>constructor</code>.</li>
+            </ul>
+          </section>
+
+          <section id="constructors-code">
+            <h1>Constructeurs</h1>
+
+            <pre><code>function Person(first, last) {
+  this.first = first;
+  this.last = last;
+}
+
+var roiDeLaClasse = new Person('Georges', 'Abitbol');
+var superActeur = new Person('Clark', 'Gable');
+roiDeLaClasse.first // => 'Georges'
+superActeur.first   // => 'Clark'</code></pre>
+          </section>
+
+          <section id="constructors-schema">
+            <h1>Constructeurs</h1>
+
+            <img src="assets/constructors.png">
+          </section>
+
+          <section id="constructors-shield">
+            <h1>Constructeurs</h1>
+            <h4>Blindage</h4>
+
+            <pre><code class="javascript">var boulet = Person('Vincent', 'Lagaf'); <span class="fragment">// => undefined</span>
+<span class="fragment">first; // => 'Vincent'</span>
+<span class="fragment">last;  // => 'Lagaf'</span>
+
+<span class="fragment">// Solution :
+function Person(first, last) {
+  if (!(this instanceof Person))
+    throw 'Et le new eh patate !';
+  // …
+}</span></code></pre>
+          </section>
+
+          <section id="prototypes-intro">
+            <h1>Prototypes</h1>
+
+            <ul>
+              <li>Tout constructeur a un <strong>prototype</strong> : un objet qui définit les propriétés (et donc méthodes) partagées par tous les objets que produit ce constructeur.</li>
+              <li>Le prototype est « vivant » : si on le triture après l’appel au constructeur, ça marche quand même !</li>
+              <li>Techniquement, y’a plein d’autres trucs dans un prototype (réf. au constructeur, gestion de propriétés…). Mais bon.</li>
+            </ul>
+          </section>
+
+          <section id="prototypes-code">
+            <h1>Prototypes</h1>
+
+            <pre><code class="javascript">// On augmente l'existant…
+Person.prototype.fullName = function fullName() {
+  return this.first + ' ' + this.last;
+};
+Person.prototype.greet = function greet() {
+  alert('Salut je m’appelle ' + this.first);
+};
+
+var luke = new Person('Mark', 'Hamill');
+luke.fullName(); // => 'Mark Hamill'
+
+// Rétroactif car lookup dynamique !
+roiDeLaClasse.greet(); // 'Salut je m’appelle Georges'</code></pre>
+          </section>
+
+          <section id="prototypes-code2">
+            <h1>Prototypes</h1>
+
+            <pre><code>function extend(target, source) {
+  for (var prop in source)
+    target[prop] = source[prop];
+  return target;
+}
+
+extend(Person.prototype, {
+  fullName: function fullName() {
+    return this.first + ' ' + this.last;
+  },
+
+  greet: function greet() {
+    alert('Salut je m’appelle ' + this.first);
+  }
+});
+
+var john = new Person('John', 'Smith');
+john.fullName() // => 'John Smith'
+john.greet()    // 'Salut je m’appelle John'</code></pre>
+          </section>
+
+          <section id="prototypes-schema">
+            <h1>Prototypes</h1>
+
+            <img src="assets/prototypes.png">
+          </section>
+
+          <section id="prototypes-even-more-code">
+            <h1>Prototypes</h1>
+
+            <pre><code>// Et bien sûr, ça marche sur les types natifs !
+
+Array.prototype.sum = function sum() {
+  var result = this[0];
+  for (var index = 1, len = this.length; index < len; ++index)
+    result += this[index];
+  return result;
+};
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].sum() // => 55
+<span class="fragment">
+Number.prototype.minutes = function minutes() {
+  return this * 60 * 1000;
+};</span>
+<span class="fragment">Number.prototype.ago = function ago() {
+  return new Date(Date.now() - this);
+};</span>
+<span class="fragment">new Date()          // => Tue Nov 05 2013 11:18:56 GMT+0100 (CET)
+(5).minutes().ago() // => Tue Nov 05 2013 11:13:56 GMT+0100 (CET)</span></code></pre>
+          </section>
+        </section>
+
+        <section id="functional">
+          <section class="chapter">
+            <h1>Functional Programming</h1>
+          </section>
+
+          <section id="fx-vocab">
+            <h1>Vocabulaire</h1>
+
+            <ul>
+              <li>
+                <strong>Fonctions de premier ordre</strong>
+                <ul>
+                  <li>Les fonctions sont des valeurs comme les autres</li>
+                  <li>Ce sont même des <strong>objets</strong> (instances de <code>Function</code>). Donc elles ont des méthodes (?!), des propriétés…</li>
+                </ul>
+              </li>
+              <li class="fragment">
+                <strong>Fonctions d’ordre supérieur</strong>
+                <ul>
+                  <li>Une fonction peut prendre des fonctions en entrée (arguments) et en sortie (valeur de retour).</li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+
+          <section id="fx-decl-vs-expr">
+            <h1>Bien déclarer</h1>
+            <h4>Déclaration ou expression&nbsp;?</h4>
+
+            <pre><code>// SAYBOF™: Function Expression (fonction anonyme en fait)
+var fx = function(a, b) { return a * b; };
+
+// SAYMIEU™: Function Declaration
+function fx(a, b) { return a * b; }
+
+// Même si vous l'affectez par ailleurs…
+var fx = function localFx(a, b) { return a * b; };
+
+var obj = { fx: function fx(a, b) { return a * b; } };
+
+// -> Named Function Expression (NFE)
+// -> Micro-bugs dans JScript, Safari 2.x…  Pas gênants en pratique.
+// -> Le nom de la NFE n'est accessible que dans la fonction (récursion sans
+//    recourir à des quasi-hacks) et facilite le débogage.</code></pre>
+          </section>
+
+          <section id="fx-decl-vs-expr-2">
+            <h1>Bien déclarer</h1>
+            <h4>Hoisting des déclarations</h4>
+
+            <pre><code>var x = 42;
+
+function x() { console.log('youpi'); }
+
+x() <span class="fragment">// => TypeError: number is not a function</span></code></pre>
+
+            <pre class="fragment"><code class="javascript">// 1: Hoisting des déclarations de fonctions
+function x() { console.log('youpi'); }
+<span class="fragment">
+// 2: Hoisting des déclarations de variables
+var x;</span>
+<span class="fragment">
+// 3: Déroulé des lignes de code
+x = 42;
+
+x();</span> <span class="fragment">// => ah bah oui, blam, forcément !</span></code></pre>
+          </section>
+
+          <section id="decls-vs-exprs-2">
+            <h1>Fonctions</h1>
+            <h4>Déclarations vs. expressions</h4>
+
+            <pre><code class="javascript">var x = 42;
+
+x = function() { console.log('youpi'); }
+
+x(); <span class="fragment">// => ça marche</span></code></pre>
+          </section>
+
+          <section id="fx-scope">
+            <h1>Portée</h1>
+
+            <pre><code>// 1. TU DÉCLARERAS TOUJOURS TES VARIABLES LOCALES AVEC "var"
+
+(function() { oops = 42; })();
+oops // => 42
+
+(function() { var shy = 42; })();
+shy // => ReferenceError
+
+// 2. LA PORTÉE D'UNE VARIABLE EST SA FONCTION ENGLOBANTE.
+
+function demo() {
+  for (var index = 0, len = 42; index < len; ++index) {
+    // …
+  }
+  console.log(index, len); // => 42, 42
+}
+demo();
+
+// JS 1.7 : "let" au lieu de "var" pour une portée de niveau bloc</code></pre>
+          </section>
+
+          <section id="fx-hiding">
+            <h1>Masquage</h1>
+            <h4><em>variable hiding</em></h4>
+
+            <pre><code>var outer = 'JS Custom', x = 'outer';
+
+function fx() {
+  var x = 'inner';
+  console.log(outer, x);
+};
+fx(); // => JS Custom, inner
+
+x // => 'outer'</code></pre>
+
+            <p>(incidemment, CoffeeScript nous évite cet écueil)</p>
+          </section>
+
+          <section id="fx-closures">
+            <h1>Closures</h1>
+            <h4>Fermetures lexicales</h4>
+
+            <pre><code>function publicFx() {
+  var stamp = Date.now();
+  return function() {
+    console.log(stamp);
+  };
+}
+
+stamp // ReferenceError
+
+var privilegedFx1 = publicFx();
+// Attendre un bref instant
+var privilegedFx2 = publicFx();
+
+// privilegedFx(1,2) sont en fait les fonctions internes construites au
+// sein de publicFx, qui grâce aux règles de portée "voient"
+// stamp.  Elles sont *closed over* par publicFx, ce qui fait
+// que les valeurs de stamp au moment où les fonctions ont été
+// renvoyéees sont préservées en RAM tant qu'une référence (ici
+// privilegedFx1/2) existe sur une fonction renvoyée.
+
+privilegedFx1(); // => affiche le stamp d'alors !
+privilegedFx2(); // => affiche le stamp d'après !
+</code></pre>
+          </section>
+
+          <section id="fx-closures">
+            <h1>Closures</h1>
+            <h4>Fermetures lexicales</h4>
+
+            <pre><code>var publicFx = (function() {
+  var callCount = 0;
+
+  function publicFx() {
+    var stamp = Date.now();
+    return function() {
+      console.log(++callCount, stamp);
+    };
+  }
+
+  return publicFx;
+})();
+
+var privilegedFx1 = publicFx();
+// Attendre un bref instant
+var privilegedFx2 = publicFx();
+
+privilegedFx1(); // => affiche 1 et le 1er stamp
+privilegedFx1(); // => affiche 2 et le 1er stamp
+privilegedFx2(); // => affiche 3 et le 2ème stamp
+// etc.
+</code></pre>
+          </section>
+
+          <section id="fx-closure-fail">
+            <h1>Souci de closure…</h1>
+
+            <pre><code class="language-javascript">for (var index = 0; index < 10; ++index)
+  setTimeout(function() { console.log(index); }, 0);
+// => 10 x "10" :-(</code></pre>
+            <div class="fragment">
+            <h3>Solution&nbsp;:</h3>
+
+            <pre><code>for (var index = 0; index < 10; ++index)
+  (function(i) {
+    setTimeout(function() { console.log(i); }, 0);
+  })(index);
+// => 0 -> 9 :-D</code></pre>
+            </div>
+          </section>
+
+          <section id="fx-varargs">
+            <h1>varargs</h1>
+            <h4>Arguments dynamiques</h4>
+
+            <pre><code>// Les paramètres servent juste à nommer des arguments par position.
+// Aucune contrainte quant à l'appel réel.
+function showArgs(a, b, c) { console.log(a, b, c); }
+showArgs();               // => undefined, undefined, undefined
+showArgs(1);              // => 1, undefined, undefined
+showArgs(1, 2, 3, 4, 5);  // => 1, 2, 3
+
+// Toute fonction a une "variable locale" nommée arguments, qui
+// est un "tableau générique" (tu te souviens ?).
+function showArgs() {
+  for (var index = 0, len = arguments.length; index < len; ++index) {
+    console.log(index, " -> ", arguments[index]);
+  }
+}
+showArgs() // => Rien
+showArgs('foo', 42, false) // => 0 -> foo // 1 -> 42 // 2 -> false</code></pre>
+          </section>
+
+          <section id="fx-module-pattern">
+            <h1>Module Pattern</h1>
+
+            <pre><code>var publicAPI = (function() {
+  // Ton code qui va bien ici
+
+  // Privé pour de vrai !
+  var myPrivateStuff;
+
+  function insiderCode() {
+    // J'ai accès aux trucs privés : fermeture lexicale !
+  }
+
+  // On publie en polluant le global…
+  oops = 'ah merde !';
+
+  // …voire explicitement…
+  window.oops = 'j’assume';
+
+  // …ou en retournant un truc récupéré par l'appelant
+  return { myPublicMethod: insiderCode };
+})();</code></pre>
+          </section>
+
+          <section id="fx-coupling">
+            <h1>Couplage explicite</h1>
+
+            <pre><code>// Pour l'import :
+(function($) {
+  // Dans ce code, $ === jQuery.
+  // Peu importe qu'on soit en jQuery.noConflict() ou pas en-dehors…
+  // Et on dit explicitement : « j'utilise jQuery »
+})(jQuery);
+
+
+
+// Pour l'export :
+(function(exports) {
+  function superCool() { … }
+  function uberCool() { … }
+  function privateStuff() { … }
+
+  exports.superCool = superCool;
+  exports.uberCool = uberCool;
+})(window) // ou myNameSpace, ou ce qu'on veut…</code></pre>
+          </section>
+
+          <section id="fx-loose-augmentation">
+            <h1>Loose augmentation</h1>
+
+            <pre><code>var MODULE = (function(mod) {
+    mod.extraFunc = function extraFunc(foo, bar) { … }
+    mod.yowzaCall = function yowzaCall() { … }
+    // Autres ajouts…
+
+    return mod;
+})(MODULE || {});</code></pre>
+          </section>
+
+          <section id="fx-crossfile-private">
+            <h1>Cross-File Privacy</h1>
+
+            <pre><code>var MODULE = (function (mod) {
+    var _private = mod._private = mod._private || {},
+        _seal = mod._seal = mod._seal || function () {
+            delete mod._private;
+            delete mod._seal;
+            delete mod._unseal;
+        },
+        _unseal = mod._unseal = mod._unseal || function () {
+            mod._private = _private;
+            mod._seal = _seal;
+            mod._unseal = _unseal;
+        };
+
+    // Ici, accès permanent à _private, _seal, et _unseal
+
+    return mod;
+}(MODULE || {}));</code></pre>
+
+            <p><a href="http://www.adequatelygood.com/2010/3/JavaScript-Module-Pattern-In-Depth" style="font-size: 50%;"><tt>http://www.adequatelygood.com/2010/3/JavaScript-Module-Pattern-In-Depth</tt></a></p>
+          </section>
+
+          <section id="fx-binding-fail">
+            <h1>Le piège du binding</h1>
+
+            <pre><code>var name = 'X';
+
+var obj = {
+  name: 'Christophe',
+  greet: function greet(whom) {
+    console.log(this.name + ' salue ' + whom);
+  },
+  greetAll: function greetAll(first, second, last) {
+    [first, second, last].forEach(this.greet);
+  }
+};
+
+obj.greet("l’atelier JS Total !");
+// => 'Christophe salut l’atelier JS Total !'
+
+var fx = obj.greet;
+fx("l’atelier") // => 'X salue l’atelier'
+
+obj.greetAll('Mark', 'Suzy'); // => 'X salue Mark', 'X salue Suzy'
+
+// http://www.alistapart.com/articles/getoutbindingsituations/</code></pre>
+          </section>
+
+          <section id="fx-binding-closure">
+            <h1>Donc on fait comment&nbsp;?</h1>
+
+            <pre><code>// 1ère approche, légère, sympa : tirer parti de
+// la fermeture lexicale (si on peut)
+
+var obj = {
+  // …
+  greetAll: function greetAll(first, second, last) {
+    var <u>that = this</u>;
+    [first, second, last].forEach(function(name) {
+      <u>that</u>.greet(name);
+    });
+  }
+}</code></pre>
+          </section>
+
+          <section id="fx-binding-closure-es5">
+            <h1>Donc on fait comment&nbsp;?</h1>
+            <h4>Incidemment, en ES5/jQuery/Prototype…</h4>
+
+            <pre><code>var obj = {
+  // …
+  greetAll: function greetAll(first, second, last) {
+    [first, second, last].forEach(this.greet<u>, this</u>);
+  }
+}</code></pre>
+          </section>
+
+          <section id="fx-apply-call">
+            <h1>apply &amp; call</h1>
+
+            <pre><code>// fx.call(ctx[, arg1[, arg2…]])
+
+var fx = obj.greet;
+fx.call(obj, 'l’atelier') // => 'Christophe salue l’atelier'
+
+var x = { 0: 'Zero', 1: 'One', length: 2 };
+Array.prototype.join.<u>call</u>(x, '-') // 'Zero-One'
+
+// fx.apply(ctx[, argArray]) -- Gros potentiel d’astuces !
+
+fx.apply(obj, ['l’atelier']) // => 'Christophe salue l’atelier'
+Array.prototype.push.<u>apply</u>(x, ['Two', 'Three', 'Four']) // => 5
+x // => { 0: 'Zero', 1: 'One', 2: 'Two', 3: 'Three', 4: 'Four', length: 5 }</code></pre>
+          </section>
+
+          <section id="fx-bound">
+            <h1>Garantir le binding</h1>
+
+            <pre><code>Function.prototype.bind = function bind(context) {
+  var f = this;
+  return function() {
+    return f.apply(context, arguments);
+  };
+};
+
+var fx = obj.greet.bind(obj);
+fx("l’atelier") // => 'Christophe salue l’atelier'</code></pre>
+          </section>
+
+          <section id="fx-throttling">
+            <h1>Throttling</h1>
+
+            <pre class="fragment"><code>Function.prototype.throttle = function(minInterval) {
+  var fx = this, lastCall = 0;
+
+  return function() {
+    if (Date.now() - lastCall &lt; minInterval)
+      return;
+
+    lastCall = Date.now();
+    return fx.apply(this, arguments);
+  };
+};
+
+function sayHi() { console.log(Date.now(), "Hiiiii…"); }
+
+console.log(Date.now());
+hiCoquine = setInterval(sayHi.throttle(1000), 100);
+
+setTimeout(function() { clearInterval(hiCoquine); }, 10000);</code></pre>
+
+            <p><a href="https://gist.github.com/tdd/5722940" style="font-size: 50%">Code de départ de l'exercice</a></p>
+          </section>
+
+          <section id="fx-negated">
+            <h1>Négation / Inversion</h1>
+
+            <pre><code>Function.prototype.negate = function negate() {
+  var fx = this;
+  return function() { return -fx.apply(this, arguments); };
+}
+
+function locComp(s1, s2) { return s1.localeCompare(s2); }
+
+var names = ['Élodie', 'christophe', 'Stéphane', 'Sébastien'];
+
+names.sort(locComp);
+// => ["christophe", "Élodie", "Sébastien", "Stéphane"]
+names.sort(locComp.negate());
+// => ["Stéphane", "Sébastien", "Élodie", "christophe"]
+// -> Plus efficace qu’un sort(locComp).reverse()
+
+// On peut imaginer invert: return !fx.apply(this, arguments)
+// -> Pratique pour des prédicats complexes qu'on veut juste inverser…</code></pre>
+          </section>
+
+          <section id="fx-strtofx-1">
+            <h1>String#toFx</h1>
+            <h4>Ruby Envy</h4>
+
+            <pre><code>String.prototype.toFx = function toFx() {
+  var fxName = this;
+  return function(self) { return self[fxName](); };
+};
+
+// Avant :
+
+'hello'.replace(/[aeiou]+/g, function(vowels) {
+  return vowels.<u>toUpperCase()</u>;
+})
+
+// Après :
+'hello'.replace(/[aeiou]+/g, <u>'toUpperCase'.toFx()</u>)</code></pre>
+          </section>
+
+          <section id="fx-strtofx-2">
+            <h1>String#toFx</h1>
+            <h4>Ruby Beat</h4>
+
+            <pre><code>String.prototype.toFx = function toFx() {
+  var fxName = this, args = arguments;
+  return function(self) { return self[fxName].apply(self, args); };
+};
+
+// Avant :
+
+'hello world this is nice'.replace(/\w+/g, function(word) {
+  return word.<u>substring(1, 3)</u>;
+})
+
+// Après :
+'hello world this is nice'.replace(/\w+/g, <u>'substring'.toFx(1, 3)</u>)</code></pre>
+          </section>
+
+          <section id="fx-not-all-prototypes">
+            <h1>Pas sur prototype ?</h1>
+            <h4>Une question d’esthétique</h4>
+
+            <pre><code>function strToFx(fxName) {
+  var args = Array.prototype.slice.call(arguments, 1);
+  return function(self) { return self[fxName].apply(self, args); };
+};
+
+'hello world this is nice'.replace(/\w+/g, strToFx('substring', 1, 3))</code></pre>
+          </section>
+        </section>
+
+        <section id="inheritance">
+          <section class="chapter">
+            <h1>Héritage prototypal</h1>
+          </section>
+
+          <section id="inher-intro">
+            <h1>Héritage prototypal</h1>
+
+            <ul>
+              <li>
+                JS fait partie des langages à prototype… ceux-ci peuvent « hériter » les uns des autres :
+                <ul>
+                  <li>tout objet a un prototype (celui de son constructeur)…</li>
+                  <li>…mais tout prototype est un objet…</li>
+                  <li>…GNI! (brainfreeze)</li>
+                </ul>
+              </li>
+              <li>Y’a plusieurs manières, aux conséquences distinctes</li>
+            </ul>
+          </section>
+
+          <section id="inher-code-1">
+            <h1>Héritage prototypal</h1>
+
+            <pre><code>function Person() { this.race = 'human'; }
+function Geek()   { this.language = 'js'; }
+
+// Héritage prototypal « académique »
+Geek.prototype = new Person(); <b class="wrong"></b>
+
+var brendon = new Geek();
+brendon.race // => 'human'
+
+// Comment différencier entre propriétés « directes »
+// et propriétés « héritées »
+brendon.hasOwnProperty('language') // => true
+brendon.hasOwnProperty('race')     // => false
+
+// Override:
+brendon.race = 'vegetable'
+brendon.race // => 'vegetable'
+delete brendon.race;
+brendon.race // => 'human'</code></pre>
+          </section>
+
+          <section id="inher-code-2">
+            <h1>Héritage prototypal</h1>
+
+            <pre><code>// En revanche, on a pété un truc…
+brendon.constructor === Geek   // => false
+brendon.constructor === Person // => true
+
+// Trop facile à réparer, ceci dit :
+Geek.prototype.constructor = Geek;
+
+// Examiner tout ça :
+var hubert = new Person();
+Person.prototype.isPrototypeOf(hubert)  // => true
+Person.prototype.isPrototypeOf(brendon) // => true
+Geek.prototype.isPrototypeOf(hubert)    // => false
+Geek.prototype.isPrototypeOf(brendon)   // => true
+// Ou en plus lisible :
+hubert instanceof Person  // => true
+brendon instanceof Person // => true
+hubert instanceof Geek    // => false
+brendon instanceof Geek   // => true</code></pre>
+          </section>
+
+          <section id="inher-ref-solution">
+            <h1>Héritage prototypal</h1>
+
+            <pre><code>// => Potentiellement oui, mais où est le piège ?
+Geek.prototype = Person.prototype; <b class="wrong"></b>
+<span class="fragment">
+// Beaucoup mieux ; l'option préférée par les frameworks
+function inherit(Child, Parent) {
+  var Inter = function() {};
+  Inter.prototype = Parent.prototype;
+  Child.prototype = new Inter();
+  Child.prototype.constructor = Child;
+}
+inherit(Geek, Person); <b class="right"></b></span></code></pre>
+          </section>
+
+          <section id="inher-ref-solution-schema">
+            <h1>Héritage prototypal</h1>
+
+            <p><img src="assets/heritage-prototypal.png"></p>
+          </section>
+
+          <section id="inher-extend-inherit">
+            <h1>Héritage prototypal</h1>
+
+            <pre><code>// Ou alors on confond héritage et recopie…  Où est le piège ?
+function extend(target, source) {
+  for (var prop in source)
+    target[prop] = source[prop];
+  return target;
+}
+
+function inherit(Child, Parent) {
+  extend(Child.prototype, Parent.prototype); <b class="wrong"></b>
+}
+// …mais quels seraient les utilisations cool d'extend ?</code></pre>
+          </section>
+
+          <section id="inher-mixins">
+            <h1>Mixins</h1>
+
+            <pre><code>var WebDevSkills = {
+  preferredMarkup:  'HTML5',
+  preferredStyling: 'CSS3',
+  attendParisWeb: function attendParisWeb() { /* … */ },
+  slicePSD: function slicePSD() { /* … */ }
+};
+extend(Geek.prototype, WebDevSkills);
+
+brendon.slicePSD()      // => …
+brendon.preferredMarkup // => 'HTML5'</code></pre>
+          </section>
+
+          <section id="inher-links">
+            <h1>Comprendre autrement</h1>
+
+            <ul>
+              <li><a href="http://www.slideshare.net/Dmitry.Baranovskiy/demystifying-prototypes-6183470">Demistifying prototypes</a></li>
+              <li><a href="http://www.slideshare.net/stoyan/advanced-javascript-presentation">Advanced JavaScript</a></li>
+              <li><a href="http://www.slideshare.net/stoyan/javascript-patterns">Javascript Patterns</a></li>
+              <li><a href="http://dmitrysoshnikov.com/ecmascript/chapter-7-2-oop-ecmascript-implementation/">OOP: ECMAScript Implementation</a></li>
+              <li><a href="http://javascriptweblog.wordpress.com/2010/06/07/understanding-javascript-prototypes/">Understanding JavaScript Prototypes</a></li>
+            </ul>
+          </section>
+
+          <section id="inher-static-instance">
+            <h1>static / instance</h1>
+
+            <ul>
+              <li>Si c’est au niveau du <strong>constructeur</strong>, c’est un membre « statique » ou « de classe »</li>
+              <li>Si c’est au niveau du <strong>prototype</strong> du constructeur, c’est un membre « d’instance » (sensible à l’état de chaque objet)</li>
+            </ul>
+          </section>
+        </section>
+
+        <section id="next-day">
+          <h1>À suivre…</h1>
+
+          <h3>Plein de trucs cool</h3>
+
+          <h3>Outillage, méthodologie et écosystème</h3>
+
+          <ul>
+            <li>Éditeurs, JSHint/Lint, beautifiers, préprocesseurs…</li>
+            <li>Débogueurs, consoles et panneaux avancés</li>
+            <li>Déterminer les API exploitables&nbsp;; Modernizr, shims, etc.</li>
+            <li>Organisation en modules&nbsp;; packaging, chargement</li>
+            <li>Templating</li>
+            <li>Frameworks MVC, du basique au full-stack</li>
+            <li>Brunch.io et Yeoman</li>
+            <li>Socle de la SPA, archi du code, étapes de développement</li>
+          </ul>
+
+          <h3>À demain&nbsp;!</h3>
+        </section>
+      </div>
+
+      <!-- The navigational controls UI -->
+      <aside class="controls">
+        <a class="left" href="#">&#x25C4;</a>
+        <a class="right" href="#">&#x25BA;</a>
+        <a class="up" href="#">&#x25B2;</a>
+        <a class="down" href="#">&#x25BC;</a>
+      </aside>
+
+      <!-- Displays presentation progress, max value changes via JS to reflect # of slides -->
+      <div class="progress"><span></span></div>
+
+    </div>
+
+    <!-- Optional libraries for code syntax highlighting and classList support in IE9 -->
+    <script src="lib/highlight.js"></script>
+    <script src="lib/classList.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+      // Parse the query string into a key/value object
+      var query = {};
+      location.search.replace( /[A-Z0-9]+?=(\w*)/gi, function(a) {
+        query[ a.split( '=' ).shift() ] = a.split( '=' ).pop();
+      } );
+
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // If true; each slide will be pushed to the browser history
+        history: true,
+
+        // Loops the presentation, defaults to false
+        loop: false,
+
+        // Flags if mouse wheel navigation should be enabled
+        mouseWheel: true,
+
+        // Apply a 3D roll to links on hover
+        rollingLinks: true,
+
+        // UI style
+        theme: query.theme || 'default', // default/neon
+
+        // Transition style
+        transition: query.transition || 'default' // default/cube/page/concave/linear(2d)
+      });
+
+      hljs.initHighlightingOnLoad();
+    </script>
+  </body>
+</html>

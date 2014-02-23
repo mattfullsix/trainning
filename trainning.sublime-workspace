@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"f",
+				"forLoop"
+			],
+			[
+				"forl",
+				"forloop	forloop"
+			],
+			[
 				"m",
 				"myArray"
 			],
@@ -76,10 +84,58 @@
 	"buffers":
 	[
 		{
-			"file": "html/doc.html",
+			"file": "scss/style.scss",
 			"settings":
 			{
-				"buffer_size": 12221,
+				"buffer_size": 1205,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "scss/objects/_utils.scss",
+			"settings":
+			{
+				"buffer_size": 6640,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "scss/objects/_lists.scss",
+			"settings":
+			{
+				"buffer_size": 556,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "scss/elements/_blocks.scss",
+			"settings":
+			{
+				"buffer_size": 1450,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "scss/objects/_links.scss",
+			"settings":
+			{
+				"buffer_size": 1750,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "html/js/main.js",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "html/index.html",
+			"settings":
+			{
+				"buffer_size": 34131,
 				"line_ending": "Windows"
 			}
 		}
@@ -87,9 +143,25 @@
 	"build_system": "Packages/User/Builds/Sass-build.sublime-build",
 	"command_palette":
 	{
-		"height": 242.0,
+		"height": 58.0,
 		"selected_items":
 		[
+			[
+				"ssjson",
+				"Set Syntax: JSON"
+			],
+			[
+				"PACK",
+				"Package Control: List Packages"
+			],
+			[
+				"snipper",
+				"Snippet: jQuery ready function"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
 			[
 				"insta",
 				"Package Control: Install Package"
@@ -97,10 +169,6 @@
 			[
 				"lint",
 				"Preferences: SublimeLinter Settings – User"
-			],
-			[
-				"install",
-				"Package Control: Install Package"
 			],
 			[
 				"ssjason",
@@ -200,13 +268,56 @@
 	},
 	"file_history":
 	[
+		"/C/wamp/www/_trainning/spa-basis/app/views/check_in_view.js",
+		"/C/wamp/www/_trainning/spa-basis/app/lib/persistence.js",
+		"/C/Users/pm/AppData/Roaming/Sublime Text 3/Packages/User/SublimeLinter.sublime-settings",
+		"/C/wamp/www/_trainning/html/js/test.js",
+		"/C/Users/pm/AppData/Roaming/Sublime Text 3/Packages/SublimeLinter/SublimeLinter.sublime-settings",
+		"/C/wamp/www/_trainning/spa-basis/.jshintrc",
+		"/C/wamp/www/_trainning/spa-basis/app/lib/places.js",
+		"/C/wamp/www/_trainning/.jshintrc",
+		"/C/wamp/www/_trainning/.gitignore",
+		"/C/wamp/www/_trainning/README.md",
+		"/C/wamp/www/_trainning/bower.json",
+		"/C/wamp/www/_trainning/scss/objects/_headings.scss",
+		"/C/wamp/www/_trainning/scss/objects/_codeblock.scss",
+		"/C/wamp/www/_trainning/spa-basis/config.coffee",
+		"/C/wamp/www/_trainning/spa-basis/vendor/styles/bootstrap/code.less",
+		"/C/wamp/www/_trainning/bower_components/modernizr/feature-detects/css-objectfit.js",
+		"/C/wamp/www/_trainning/scss/elements/_blocks.scss",
+		"/C/wamp/www/_trainning/scss/objects/_lists.scss",
+		"/C/wamp/www/_trainning/rjs-demo-basis/node_modules/uglify-js/test/compress/blocks.js",
+		"/C/wamp/www/_trainning/scss/objects/_utils.scss",
+		"/C/wamp/www/_trainning/spa-basis/node_modules/mocha/lib/utils.js",
+		"/C/wamp/www/_trainning/spa-basis/node_modules/express/lib/utils.js",
+		"/C/wamp/www/_trainning/rjs-demo-basis/node_modules/uglify-js/lib/utils.js",
+		"/C/wamp/www/_trainning/spa-basis/node_modules/socket.io/lib/util.js",
+		"/C/wamp/www/_trainning/rjs-demo-basis/node_modules/.bin/uglifyjs",
+		"/C/wamp/www/_trainning/scss/elements/_footer.scss",
+		"/C/wamp/www/_trainning/bower_components/modernizr/feature-detects/lists-reversed.js",
+		"/C/wamp/www/_trainning/scss/elements/_header.scss",
+		"/C/wamp/www/_trainning/scss/objects/_formobjects.scss",
+		"/C/wamp/www/_trainning/html/doc.html",
+		"/C/wamp/www/_trainning/bower_components/modernizr/feature-detects/blob-constructor.js",
+		"/C/wamp/www/_trainning/bower_components/modernizr/feature-detects/battery-level.js",
+		"/C/wamp/www/_trainning/scss/objects/_links.scss",
+		"/C/wamp/www/_trainning/scss/page/_ui.scss",
+		"/C/wamp/www/_trainning/html/js/plugins.js",
+		"/C/wamp/www/f6tech_template/html/js/plugins.js",
+		"/C/wamp/www/_trainning/html/js/main.js",
+		"/C/wamp/www/_trainning/html/js/testlint.js",
+		"/C/wamp/www/_trainning/trainning.sublime-project",
+		"/C/Users/pm/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/C/Users/pm/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/C/wamp/www/_trainning/scss/_vars.scss",
+		"/C/wamp/www/_trainning/Gruntfile.js",
+		"/C/wamp/www/_trainning/package.json",
+		"/C/wamp/www/f6tech_template/.jshintrc",
+		"/C/wamp/www/_devlab/devlab.sublime-project",
 		"/C/Users/pm/Desktop/formation",
 		"/C/Users/pm/AppData/Roaming/Sublime Text 3/.jshintrc",
 		"/D/Perso/misc/Help/claire-2.txt",
 		"/D/Perso/misc/Help/jfseule.txt",
-		"/C/Users/pm/AppData/Roaming/Sublime Text 3/Packages/SublimeLinter/SublimeLinter.sublime-settings",
-		"/C/Users/pm/AppData/Roaming/Sublime Text 3/Packages/User/SublimeLinter.sublime-settings",
-		"/C/Users/pm/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
 		"/C/Users/pm/Desktop/.jshintrc",
 		"/C/wamp/www/_devlab/html/index.html",
 		"/C/wamp/www/f6tech_template/html/js-source/plugins/_jquery.boilerplate.js",
@@ -216,9 +327,7 @@
 		"/C/wamp/www/_devlab/html/js/main_test.js",
 		"/C/wamp/www/_devlab/html/templates/partials/partial.html",
 		"/C/wamp/www/_devlab/html/js/vendormescouikles.js",
-		"/C/Users/pm/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
 		"/C/Users/pm/AppData/Roaming/Sublime Text 3/Packages/User/Builds/Sass-build.sublime-build",
-		"/C/wamp/www/_devlab/devlab.sublime-project",
 		"/C/wamp/www/_devlab/scss/objects/_headings.scss",
 		"/C/wamp/www/_devlab/html/emmet.html",
 		"/C/wamp/www/_devlab/html/blank.html",
@@ -263,7 +372,6 @@
 		"/C/wamp/www/_devlab/scss/style.scss",
 		"/C/wamp/www/_devlab/scss/watch",
 		"/C/wamp/www/f6tech_template/html/index.html",
-		"/C/wamp/www/f6tech_template/html/js/plugins.js",
 		"/C/wamp/www/_devlab/.gitignore",
 		"/C/wamp/www/f6tech_template/node_modules/grunt-html-validation/node_modules/request/tests/test-digest-auth.js",
 		"/C/wamp/www/f6tech_template/scss/elements/_navigation.scss",
@@ -287,47 +395,7 @@
 		"/C/wamp/www/f6tech_template/scss/page/_layout.scss",
 		"/C/wamp/www/f6tech_template/.sass-cache/a99b0ec9bd8be721c01ffed49de526070acbec19/_formobjects.scssc",
 		"/C/wamp/www/f6tech_template/bower_components/modernizr/feature-detects/forms-fileinput.js",
-		"/C/wamp/www/f6tech_template/bower_components/requirejs/docs/faq-optimization.html",
-		"/C/wamp/www/f6tech_template/bower_components/requirejs/tests/foo",
-		"/C/wamp/www/f6tech_template/scss/elements/_header.scss",
-		"/C/wamp/www/f6tech_template/.sass-cache/c4ef5f74af931c74d2b60f612173705572f0f63e/_header.scssc",
-		"/C/wamp/www/f6tech_template/node_modules/grunt-bower-verify/node_modules/semver/head.js",
-		"/C/wamp/www/f6tech_template/node_modules/grunt-newer/test/helper.js",
-		"/C/wamp/www/f6tech_template/html/js-source/home-page.js",
-		"/C/wamp/www/f6tech_template/scss/_vars.scss",
-		"/C/wamp/www/mynikon-front/html/js/lib/jquery.navigation.js",
-		"/C/wamp/www/f6tech_template/test.js",
-		"/C/wamp/www/f6tech_template/bower_components/requirejs/tests/simple-nohead.html",
-		"/C/wamp/www/f6tech_template/bower_components/requirejs/tests/browsertests/scriptload/nine.js",
-		"/C/wamp/www/f6tech_template/node_modules/grunt-jscs-checker/node_modules/jscs/lib/rules/disallow-spaces-inside-parentheses.js",
-		"/C/wamp/www/f6tech_template/bower_components/requirejs/tests/browsertests/scriptloadinteractive/index-php.html",
-		"/C/wamp/www/f6tech_template/html/js-source/helper/text.js",
-		"/C/wamp/www/f6tech_template/node_modules/grunt-html-validation/node_modules/request/tests/test-errors.js",
-		"/C/wamp/www/f6tech_template/node_modules/grunt-bower-verify/node_modules/bower/node_modules/mout/array/lastIndexOf.js",
-		"/C/wamp/www/f6tech_template/bower_components/inuit.css/LICENSE",
-		"/C/wamp/www/f6tech_template/Gruntfile.js",
-		"/C/wamp/www/f6tech_template/node_modules/grunt-bower-verify/node_modules/bower/lib/core/resolvers/GitResolver.js",
-		"/C/wamp/www/f6tech_template/.sass-cache/0521344c5fc6f70771dd125abe622e6d3709b489/_link-complex.scssc",
-		"/C/wamp/www/f6tech_template/bower_components/requirejs/tests/hasOwnProperty/hasOwnProperty.html",
-		"/C/wamp/www/f6tech_template/bower_components/requirejs/docs/history.html",
-		"/C/wamp/www/f6tech_template/.sass-cache/a99b0ec9bd8be721c01ffed49de526070acbec19/_links.scssc",
-		"/C/Users/pm/AppData/Roaming/Sublime Text 3/Packages/User/JavaScript/self_fn.sublime-snippet",
-		"/C/wamp/www/f6tech_template/.sass-cache/c4ef5f74af931c74d2b60f612173705572f0f63e/_navigation.scssc",
-		"/C/wamp/www/f6tech_template/.sass-cache/0521344c5fc6f70771dd125abe622e6d3709b489/_nav.scssc",
-		"/C/wamp/www/f6tech_template/node_modules/grunt-contrib-jshint/node_modules/jshint/data/non-ascii-identifier-start.js",
-		"/C/wamp/www/f6tech_template/package.json",
-		"/C/wamp/www/f6tech_template/node_modules/grunt-contrib-jshint/test/fixtures/lint.txt",
-		"/C/wamp/www/f6tech_template/scss/objects/_sprite.scss",
-		"/C/wamp/www/f6tech_template/node_modules/grunt-sprite-generator/test/spriteGenerator_test.js",
-		"/C/wamp/www/f6tech_template/.sass-cache/a99b0ec9bd8be721c01ffed49de526070acbec19/_sprite.scssc",
-		"/C/wamp/www/f6tech_template/.sass-cache/0521344c5fc6f70771dd125abe622e6d3709b489/_sprite.scssc",
-		"/C/wamp/www/f6tech_template/node_modules/grunt-sprite-generator/tasks/spriteGenerator.js",
-		"/C/wamp/www/f6tech_template/node_modules/grunt-contrib-uglify/test/fixtures/expected/sourcemap_prefix",
-		"/C/wamp/www/f6tech_template/.sass-cache/91379cb2ee2b6abe30615e06f2a91aeb601ba023/_lists.scssc",
-		"/C/wamp/www/f6tech_template/.sass-cache/0521344c5fc6f70771dd125abe622e6d3709b489/_lozenges.scssc",
-		"/C/wamp/www/f6tech_template/bower_components/modernizr/modernizr.js",
-		"/D/Perso/misc/Help/clairedelune04.txt",
-		"/D/Perso/misc/Help/gym3.txt"
+		"/C/wamp/www/f6tech_template/bower_components/requirejs/docs/faq-optimization.html"
 	],
 	"find":
 	{
@@ -338,6 +406,9 @@
 		"height": 90.0,
 		"where_history":
 		[
+			"C:\\wamp\\www\\_trainning\\spa-basis\\app",
+			"C:\\wamp\\www\\_trainning\\spa-basis",
+			"C:\\wamp\\www\\_trainning\\scss",
 			"C:\\wamp\\www\\f6tech_template\\scss",
 			"C:\\wamp\\www\\f6tech_template",
 			"C:\\wamp\\www\\template_inuit\\scss\\custom"
@@ -348,6 +419,26 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"createcheckIn",
+			"addcheckIn",
+			"checkIn",
+			" ? '",
+			"for ",
+			"for",
+			">Topics<",
+			"5px",
+			"10px",
+			"2px",
+			"5px",
+			"10px",
+			"padding:10px 0 10px 0;",
+			"section class=\"layout-centered\"",
+			"section",
+			"h2",
+			"20px",
+			"layout-centered",
+			"gfx",
+			"f6Tech_Template",
 			"compta",
 			"devi",
 			"slidesW",
@@ -462,32 +553,208 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 6,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "html/doc.html",
+					"file": "scss/style.scss",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 12221,
+						"buffer_size": 1205,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1532,
-								1532
+								798,
+								798
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
+							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 392.0,
+						"translation.y": 168.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "scss/objects/_utils.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6640,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								710,
+								710
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 112.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "scss/objects/_lists.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 556,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								377,
+								377
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "scss/elements/_blocks.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1450,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1440,
+								1440
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": -0.0,
+						"translation.y": 644.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "scss/objects/_links.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1750,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								865,
+								865
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 420.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "html/js/main.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "html/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 34131,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4267,
+								4267
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 988.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -547,6 +814,50 @@
 		"selected_items":
 		[
 			[
+				"block",
+				"scss\\elements\\_blocks.scss"
+			],
+			[
+				"lists",
+				"scss\\objects\\_lists.scss"
+			],
+			[
+				"code",
+				"scss\\objects\\_codeblock.scss"
+			],
+			[
+				"headin",
+				"scss\\objects\\_headings.scss"
+			],
+			[
+				"blocks",
+				"scss\\elements\\_blocks.scss"
+			],
+			[
+				"utils",
+				"scss\\objects\\_utils.scss"
+			],
+			[
+				"foot",
+				"scss\\elements\\_footer.scss"
+			],
+			[
+				"links",
+				"scss\\objects\\_links.scss"
+			],
+			[
+				"header",
+				"scss\\elements\\_header.scss"
+			],
+			[
+				"footer",
+				"scss\\elements\\_footer.scss"
+			],
+			[
+				"heading",
+				"scss\\objects\\_headings.scss"
+			],
+			[
 				"navig",
 				"scss\\elements\\_navigation.scss"
 			],
@@ -555,16 +866,8 @@
 				"scss\\objects\\_headings.scss"
 			],
 			[
-				"links",
-				"scss\\objects\\_links.scss"
-			],
-			[
 				"naviga",
 				"scss\\elements\\_navigation.scss"
-			],
-			[
-				"heading",
-				"scss\\objects\\_headings.scss"
 			],
 			[
 				"formobj",
@@ -612,7 +915,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 235.0,
+	"side_bar_width": 185.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
