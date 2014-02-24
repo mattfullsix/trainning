@@ -38,10 +38,6 @@ ehthumbs.db
 Thumbs.db
 nbproject
 
-# Compiled css #
-################
-html/css/style.min.css
-
 # Paths #
 #########
 .sass-cache
@@ -71,3 +67,4 @@ html/js-built
 ############
 rjs-demo-basis/*
 spa-basis/*
+trainning.sublime-workspace
