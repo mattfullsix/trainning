@@ -39,6 +39,15 @@ a.link--burger {
 	width:40px;
 }
 
+a.link--anchors {
+	@extend .link;
+	@include font-size($h3-size);
+	color:$black;
+	display:block;
+	line-height:normal;
+	text-decoration:none;
+}
+
 a.link--slides {
 	@extend .link;
 	background:url(../img/icons/external-link.png) no-repeat right 2px;
@@ -47,6 +56,12 @@ a.link--slides {
 	padding-right:15px;
 	padding-bottom:10px;
 	text-decoration:none;
+}
+
+a.link--back {
+	@extend .link--slides;
+	background-position:right 12px;
+	padding:10px 15px 10px 0;
 }
 
 a.link--ext {

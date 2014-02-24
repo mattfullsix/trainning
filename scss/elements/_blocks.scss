@@ -43,6 +43,11 @@
 }
 
 .formation {
+	.formation__header {
+		.grid__item {
+			text-align:center;
+		}
+	}
 	.formation__heading {
 		@extend .extd-naked;
 		@include media-query(desk) {
@@ -76,6 +81,11 @@
 		.topic {
 			.topic__title {
 				@extend .h2-size;
+			}
+			.topic__baseline {
+				@extend p;
+				@include font-size(20px);
+				line-height:normal;
 			}
 			.troll__alert {
 				@extend .h2-size;

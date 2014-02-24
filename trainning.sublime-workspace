@@ -100,6 +100,14 @@
 			}
 		},
 		{
+			"file": "scss/objects/_fonts.scss",
+			"settings":
+			{
+				"buffer_size": 570,
+				"line_ending": "Windows"
+			}
+		},
+		{
 			"file": "scss/objects/_lists.scss",
 			"settings":
 			{
@@ -111,7 +119,7 @@
 			"file": "scss/elements/_blocks.scss",
 			"settings":
 			{
-				"buffer_size": 1450,
+				"buffer_size": 1613,
 				"line_ending": "Windows"
 			}
 		},
@@ -119,7 +127,7 @@
 			"file": "scss/objects/_links.scss",
 			"settings":
 			{
-				"buffer_size": 1750,
+				"buffer_size": 1995,
 				"line_ending": "Windows"
 			}
 		},
@@ -135,15 +143,15 @@
 			"file": "html/index.html",
 			"settings":
 			{
-				"buffer_size": 34131,
+				"buffer_size": 38284,
 				"line_ending": "Windows"
 			}
 		}
 	],
-	"build_system": "Packages/User/Builds/Sass-build.sublime-build",
+	"build_system": "Sass",
 	"command_palette":
 	{
-		"height": 58.0,
+		"height": 392.0,
 		"selected_items":
 		[
 			[
@@ -247,7 +255,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 416.0
+		"width": 472.0
 	},
 	"console":
 	{
@@ -268,6 +276,10 @@
 	},
 	"file_history":
 	[
+		"/C/wamp/www/trainning/bower_components/inuit.css/objects/_block-list.scss",
+		"/C/wamp/www/trainning/scss/elements/_blocks.scss",
+		"/C/wamp/www/trainning/scss/objects/_headings.scss",
+		"/C/wamp/www/trainning/trainning.sublime-project",
 		"/C/wamp/www/_trainning/spa-basis/app/views/check_in_view.js",
 		"/C/wamp/www/_trainning/spa-basis/app/lib/persistence.js",
 		"/C/Users/pm/AppData/Roaming/Sublime Text 3/Packages/User/SublimeLinter.sublime-settings",
@@ -391,11 +403,7 @@
 		"/C/wamp/www/f6tech_template/scss/elements/_brand.scss",
 		"/C/wamp/www/f6tech_template/scss/objects/_formobjects.scss",
 		"/C/wamp/www/f6tech_template/scss/objects/_media.scss",
-		"/C/wamp/www/f6tech_template/scss/objects/_paragraphs.scss",
-		"/C/wamp/www/f6tech_template/scss/page/_layout.scss",
-		"/C/wamp/www/f6tech_template/.sass-cache/a99b0ec9bd8be721c01ffed49de526070acbec19/_formobjects.scssc",
-		"/C/wamp/www/f6tech_template/bower_components/modernizr/feature-detects/forms-fileinput.js",
-		"/C/wamp/www/f6tech_template/bower_components/requirejs/docs/faq-optimization.html"
+		"/C/wamp/www/f6tech_template/scss/objects/_paragraphs.scss"
 	],
 	"find":
 	{
@@ -419,6 +427,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"back to",
+			"topic__title",
+			"a",
+			"formation__section",
 			"createcheckIn",
 			"addcheckIn",
 			"checkIn",
@@ -553,7 +565,7 @@
 	"groups":
 	[
 		{
-			"selected": 6,
+			"selected": 7,
 			"sheets":
 			[
 				{
@@ -569,8 +581,8 @@
 						"selection":
 						[
 							[
-								798,
-								798
+								799,
+								799
 							]
 						],
 						"settings":
@@ -578,10 +590,10 @@
 							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 168.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
@@ -597,8 +609,8 @@
 						"selection":
 						[
 							[
-								710,
-								710
+								556,
+								556
 							]
 						],
 						"settings":
@@ -608,14 +620,42 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 112.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
+					"file": "scss/objects/_fonts.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 570,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								570,
+								570
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
 					"file": "scss/objects/_lists.scss",
 					"semi_transient": false,
 					"settings":
@@ -641,24 +681,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 4,
 					"file": "scss/elements/_blocks.scss",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1450,
+						"buffer_size": 1613,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1440,
-								1440
+								1509,
+								1509
 							]
 						],
 						"settings":
@@ -667,27 +707,27 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": -0.0,
-						"translation.y": 644.0,
+						"translation.y": 540.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 5,
 					"file": "scss/objects/_links.scss",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1750,
+						"buffer_size": 1995,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								865,
-								865
+								761,
+								761
 							]
 						],
 						"settings":
@@ -696,14 +736,14 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 420.0,
+						"translation.y": 225.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 6,
 					"file": "html/js/main.js",
 					"semi_transient": false,
 					"settings":
@@ -731,20 +771,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 7,
 					"file": "html/index.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 34131,
+						"buffer_size": 38284,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4267,
-								4267
+								38283,
+								38283
 							]
 						],
 						"settings":
@@ -754,7 +794,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 988.0,
+						"translation.y": 10902.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -796,7 +836,7 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 103.0
+		"height": 80.0
 	},
 	"output.find_results":
 	{
@@ -814,6 +854,14 @@
 		"selected_items":
 		[
 			[
+				"blocks",
+				"scss\\elements\\_blocks.scss"
+			],
+			[
+				"headin",
+				"scss\\objects\\_headings.scss"
+			],
+			[
 				"block",
 				"scss\\elements\\_blocks.scss"
 			],
@@ -824,14 +872,6 @@
 			[
 				"code",
 				"scss\\objects\\_codeblock.scss"
-			],
-			[
-				"headin",
-				"scss\\objects\\_headings.scss"
-			],
-			[
-				"blocks",
-				"scss\\elements\\_blocks.scss"
 			],
 			[
 				"utils",
