@@ -44,6 +44,9 @@
 
 .formation {
 	.formation__header {
+		.heading {
+			margin:0 0 20px 0;
+		}
 		.grid__item {
 			text-align:center;
 		}
@@ -73,6 +76,11 @@
 		}
 		@include media-query(palm) {
 			padding-bottom:10px;
+		}
+	}
+	.formation__footer {
+		figure {
+			text-align:right;
 		}
 	}
 	/*ul*/.topics {
